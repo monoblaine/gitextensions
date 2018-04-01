@@ -251,7 +251,7 @@ namespace GitUI.CommandsDialogs
             //
             this.openWithDifftoolToolStripMenuItem.Image = global::GitUI.Properties.Resources.IconDiffTool;
             this.openWithDifftoolToolStripMenuItem.Name = "openWithDifftoolToolStripMenuItem";
-            this.openWithDifftoolToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.openWithDifftoolToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.openWithDifftoolToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.openWithDifftoolToolStripMenuItem.Text = "Open with difftool";
             this.openWithDifftoolToolStripMenuItem.Click += new System.EventHandler(this.OpenWithDifftoolToolStripMenuItemClick);
@@ -443,7 +443,7 @@ namespace GitUI.CommandsDialogs
             //
             this.stagedOpenDifftoolToolStripMenuItem9.Image = global::GitUI.Properties.Resources.IconDiffTool;
             this.stagedOpenDifftoolToolStripMenuItem9.Name = "stagedOpenDifftoolToolStripMenuItem9";
-            this.stagedOpenDifftoolToolStripMenuItem9.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.stagedOpenDifftoolToolStripMenuItem9.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.stagedOpenDifftoolToolStripMenuItem9.Size = new System.Drawing.Size(232, 22);
             this.stagedOpenDifftoolToolStripMenuItem9.Text = "Open with difftool";
             this.stagedOpenDifftoolToolStripMenuItem9.Click += new System.EventHandler(this.stagedOpenDifftoolToolStripMenuItem9_Click);
@@ -582,7 +582,7 @@ namespace GitUI.CommandsDialogs
             //
             this.openDiffMenuItem.Image = global::GitUI.Properties.Resources.IconDiffTool;
             this.openDiffMenuItem.Name = "openDiffMenuItem";
-            this.openDiffMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.openDiffMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.openDiffMenuItem.Size = new System.Drawing.Size(228, 22);
             this.openDiffMenuItem.Text = "Open with difftool";
             this.openDiffMenuItem.Click += new System.EventHandler(this.openDiffMenuItem_Click);
