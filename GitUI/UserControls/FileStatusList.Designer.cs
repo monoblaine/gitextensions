@@ -91,6 +91,7 @@ namespace GitUI
             this.FilterComboBox.GotFocus += new System.EventHandler(this.FilterComboBox_GotFocus);
             this.FilterComboBox.LostFocus += new System.EventHandler(this.FilterComboBox_LostFocus);
             this.FilterComboBox.MouseEnter += new System.EventHandler(this.FilterComboBox_MouseEnter);
+            this.FilterComboBox.Visible = false;
             // 
             // FilterWatermarkLabel
             // 
@@ -115,10 +116,8 @@ namespace GitUI
             // FileStatusList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.Controls.Add(this.FilterWatermarkLabel);
             this.Controls.Add(this.NoFiles);
             this.Controls.Add(this.FileStatusListView);
-            this.Controls.Add(this.FilterComboBox);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FileStatusList";
             this.Size = new System.Drawing.Size(682, 485);
