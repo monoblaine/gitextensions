@@ -91,6 +91,7 @@ namespace GitUI.CommandsDialogs
             this.DiffSplitContainer.Size = new System.Drawing.Size(729, 360);
             this.DiffSplitContainer.SplitterDistance = 300;
             this.DiffSplitContainer.TabIndex = 0;
+            this.DiffSplitContainer.TabStop = false;
             // 
             // DiffFiles
             // 
