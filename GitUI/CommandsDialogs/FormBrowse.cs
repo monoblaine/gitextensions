@@ -1892,6 +1892,7 @@ namespace GitUI.CommandsDialogs
             FocusCommitInfo,
             FocusFileTree,
             FocusDiff,
+            GoBackToFileList,
             Commit,
             AddNotes,
             FindFileInSelectedCommit,
@@ -1936,6 +1937,15 @@ namespace GitUI.CommandsDialogs
                 case Commands.FocusCommitInfo: CommitInfoTabControl.SelectedTab = CommitInfoTabPage; break;
                 case Commands.FocusFileTree: CommitInfoTabControl.SelectedTab = TreeTabPage; fileTree.Focus(); break;
                 case Commands.FocusDiff: CommitInfoTabControl.SelectedTab = DiffTabPage; revisionDiff.Focus(); break;
+                case Commands.GoBackToFileList:
+                    if (CommitInfoTabControl.SelectedTab == DiffTabPage) {
+                        revisionDiff.Controls.Find("DiffFiles", true).Single().Focus();
+                    }
+                    else {
+                        return base.ExecuteCommand(cmd);
+                    }
+
+                    break;
                 case Commands.Commit: CommitToolStripMenuItemClick(null, null); break;
                 case Commands.AddNotes: AddNotes(); break;
                 case Commands.FindFileInSelectedCommit: FindFileInSelectedCommit(); break;
