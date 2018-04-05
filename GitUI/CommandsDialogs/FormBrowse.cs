@@ -163,8 +163,8 @@ namespace GitUI.CommandsDialogs
                 CommitInfoTabControl.ImageList = imageList;
                 imageList.ColorDepth = ColorDepth.Depth8Bit;
                 imageList.Images.Add(Resources.IconCommit);
-                imageList.Images.Add(Resources.IconFileTree);
                 imageList.Images.Add(Resources.IconDiff);
+                imageList.Images.Add(Resources.IconFileTree);
                 imageList.Images.Add(Resources.IconKey);
                 CommitInfoTabControl.TabPages[0].ImageIndex = 0;
                 CommitInfoTabControl.TabPages[1].ImageIndex = 1;
