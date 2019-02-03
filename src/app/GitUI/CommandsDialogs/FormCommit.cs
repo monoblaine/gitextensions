@@ -1024,10 +1024,8 @@ public sealed partial class FormCommit : GitModuleForm
         {
             _currentFilesList.SelectedGitItems = newSelection;
         }
-        else
-        {
-            SelectStoredNextIndex();
-        }
+
+        SelectStoredNextIndex();
 
         return;
 
