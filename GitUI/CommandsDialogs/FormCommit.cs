@@ -1145,10 +1145,8 @@ namespace GitUI.CommandsDialogs
             {
                 _currentFilesList.SelectedGitItems = newSelection;
             }
-            else
-            {
-                SelectStoredNextIndex();
-            }
+
+            SelectStoredNextIndex();
 
             return;
 
