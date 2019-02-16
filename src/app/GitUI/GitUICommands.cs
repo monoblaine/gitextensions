@@ -552,14 +552,23 @@ namespace GitUI
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
 
-                using FormCommit form = new(this, commitMessage: commitMessage);
-                if (showOnlyWhenChanges)
+                if (AppSettings.UseNonModalCommitWindow)
                 {
-                    form.ShowDialogWhenChanges(owner);
+                    // NOTE: form is deliberately declared without "using" as it should not be disposed when it goes out of scope.
+                    FormCommit form = new(this, commitMessage: commitMessage) { ShowInTaskbar = true };
+                    form.Show();
                 }
                 else
                 {
-                    form.ShowDialog(owner);
+                    using FormCommit form = new(this, commitMessage: commitMessage);
+                    if (showOnlyWhenChanges)
+                    {
+                        form.ShowDialogWhenChanges(owner);
+                    }
+                    else
+                    {
+                        form.ShowDialog(owner);
+                    }
                 }
 
                 return true;
