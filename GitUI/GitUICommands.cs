@@ -563,7 +563,18 @@ namespace GitUI
                 return true;
             }
 
-            return DoActionOnRepo(owner, Action, changesRepo: false, preEvent: PreCommit, postEvent: PostCommit);
+            var ehe = false;
+
+            if (ehe)
+            {
+                return DoActionOnRepo(owner, Action, changesRepo: false, preEvent: PreCommit, postEvent: PostCommit);
+            }
+
+            var form2 = new FormCommit(this) { ShowInTaskbar = true };
+
+            form2.Show();
+
+            return true;
         }
 
         public bool StartInitializeDialog(IWin32Window owner = null, string dir = null, EventHandler<GitModuleEventArgs> gitModuleChanged = null)
