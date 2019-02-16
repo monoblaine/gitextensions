@@ -2092,6 +2092,14 @@ public static partial class AppSettings
         get => GetBool("GitAsyncWhenMinimized", false);
     }
 
+    // Currently not configurable in UI (Set manually in settings file)
+    // If true, the commit window will be non-modal and it will be displayed in the taskbar.
+    public static bool UseNonModalCommitWindow
+    {
+        get => GetBool("UseNonModalCommitWindow", false);
+        set => SetBool("UseNonModalCommitWindow", value);
+    }
+
     public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
     public static ISetting<string> UninformativeRepoNameRegex { get; } = Setting.Create(DetailedSettingsPath, nameof(UninformativeRepoNameRegex), "app|(repo(sitory)?)");
