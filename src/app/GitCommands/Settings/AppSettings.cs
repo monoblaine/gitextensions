@@ -2100,6 +2100,13 @@ public static partial class AppSettings
         set => SetBool("UseNonModalCommitWindow", value);
     }
 
+    // Currently not configurable in UI (Set manually in settings file)
+    public static bool ShowLargeFileSizeWarningInFileViewer
+    {
+        get => GetBool("ShowLargeFileSizeWarningInFileViewer", true);
+        set => SetBool("ShowLargeFileSizeWarningInFileViewer", value);
+    }
+
     public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
     public static ISetting<string> UninformativeRepoNameRegex { get; } = Setting.Create(DetailedSettingsPath, nameof(UninformativeRepoNameRegex), "app|(repo(sitory)?)");
