@@ -1032,7 +1032,7 @@ namespace GitUI.Editor
         {
             const long maxLength = 5 * 1024 * 1024;
 
-            if (contentLength > maxLength)
+            if (contentLength > maxLength && AppSettings.ShowLargeFileSizeWarningInFileViewer)
             {
                 await ClearAsync();
                 Refresh();
