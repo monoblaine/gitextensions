@@ -827,18 +827,6 @@ namespace GitUI.Editor
 
         private Task ShowOrDeferAsync(long contentLength, Func<Task> showFunc)
         {
-            const long maxLength = 5 * 1024 * 1024;
-
-            if (contentLength > maxLength)
-            {
-                Clear();
-                Refresh();
-                _NO_TRANSLATE_lblShowPreview.Text = string.Format(_largeFileSizeWarning.Text, contentLength / (1024d * 1024));
-                _NO_TRANSLATE_lblShowPreview.Show();
-                _deferShowFunc = showFunc;
-                return Task.CompletedTask;
-            }
-            else
             {
                 _NO_TRANSLATE_lblShowPreview.Hide();
                 _deferShowFunc = null;
