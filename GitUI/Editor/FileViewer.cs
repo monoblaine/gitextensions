@@ -156,23 +156,6 @@ namespace GitUI.Editor
 
             IsReadOnly = true;
 
-            internalFileViewer.MouseMove += (_, e) =>
-            {
-                if (IsDiffView(_viewMode) && !fileviewerToolbar.Visible)
-                {
-                    fileviewerToolbar.Visible = true;
-                    fileviewerToolbar.Location = new Point(Width - fileviewerToolbar.Width - 40, 0);
-                    fileviewerToolbar.BringToFront();
-                }
-            };
-            internalFileViewer.MouseLeave += (_, e) =>
-            {
-                if (GetChildAtPoint(PointToClient(MousePosition)) != fileviewerToolbar &&
-                    fileviewerToolbar is not null)
-                {
-                    fileviewerToolbar.Visible = false;
-                }
-            };
             internalFileViewer.TextChanged += (sender, e) =>
             {
                 if (IsDiffView(_viewMode))
