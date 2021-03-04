@@ -145,23 +145,27 @@ public partial class FileViewer : GitModuleControl
 
         IsReadOnly = true;
 
-        internalFileViewer.MouseMove += (_, e) =>
+        if (AppSettings.ShowFileViewerToolbar)
         {
-            if (_viewMode.IsPartialTextView() && !fileviewerToolbar.Visible)
+            internalFileViewer.MouseMove += (_, e) =>
             {
-                fileviewerToolbar.Visible = true;
-                fileviewerToolbar.Location = new Point(Width - fileviewerToolbar.Width - 40, 0);
-                fileviewerToolbar.BringToFront();
-            }
-        };
-        internalFileViewer.MouseLeave += (_, e) =>
-        {
-            if (GetChildAtPoint(PointToClient(MousePosition)) != fileviewerToolbar &&
-                fileviewerToolbar is not null)
+                if (_viewMode.IsPartialTextView() && !fileviewerToolbar.Visible)
+                {
+                    fileviewerToolbar.Visible = true;
+                    fileviewerToolbar.Location = new Point(Width - fileviewerToolbar.Width - 40, 0);
+                    fileviewerToolbar.BringToFront();
+                }
+            };
+            internalFileViewer.MouseLeave += (_, e) =>
             {
-                fileviewerToolbar.Visible = false;
-            }
-        };
+                if (GetChildAtPoint(PointToClient(MousePosition)) != fileviewerToolbar &&
+                    fileviewerToolbar is not null)
+                {
+                    fileviewerToolbar.Visible = false;
+                }
+            };
+        }
+
         internalFileViewer.TextChanged += (sender, e) =>
         {
             internalFileViewer.AddTextHighlighting();
