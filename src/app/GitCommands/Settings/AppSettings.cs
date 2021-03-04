@@ -2108,6 +2108,13 @@ namespace GitCommands
             set => SetBool("ShowLargeFileSizeWarningInFileViewer", value);
         }
 
+        // Currently not configurable in UI (Set manually in settings file)
+        public static bool ShowFileViewerToolbar
+        {
+            get => GetBool("ShowFileViewerToolbar", true);
+            set => SetBool("ShowFileViewerToolbar", value);
+        }
+
         public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
         private static IEnumerable<(string name, string value)> GetSettingsFromRegistry()
