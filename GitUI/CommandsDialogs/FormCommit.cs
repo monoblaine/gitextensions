@@ -603,9 +603,12 @@ namespace GitUI.CommandsDialogs
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == Keys.F5)
+            switch (keyData)
             {
-                RescanChanges();
+                case Keys.F5:
+                case Keys.Control | Keys.R:
+                    RescanChanges();
+                    break;
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
