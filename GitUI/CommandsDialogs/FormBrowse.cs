@@ -1057,11 +1057,11 @@ namespace GitUI.CommandsDialogs
                 toolStripFileExplorer.Enabled = validBrowseDir;
                 if (!isDashboard)
                 {
-                    refreshToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
+                    refreshToolStripMenuItem.ShortcutKeys = Keys.F5;
                 }
                 else
                 {
-                    refreshDashboardToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
+                    refreshDashboardToolStripMenuItem.ShortcutKeys = Keys.F5;
                 }
 
                 UpdatePluginMenu(validBrowseDir);
