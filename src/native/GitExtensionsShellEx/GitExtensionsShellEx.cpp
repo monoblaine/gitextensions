@@ -670,7 +670,7 @@ UINT CGitExtensionsShellEx::AddMenuItem(HMENU hMenu, LPTSTR text, int resource, 
         mii.dwTypeData = text;
     else
     {
-        textEx = std::wstring(L"GitExt ") + text;
+        textEx = std::wstring(L"&GitExt ") + text;
         mii.dwTypeData = &textEx[0];
     }
 
