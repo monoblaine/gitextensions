@@ -453,6 +453,7 @@ public sealed partial class FileStatusList : GitModuleControl
 
     private void SetFindInCommitFilesGitGrepVisibilityImpl(bool visible)
     {
+        visible = false;
         _formFindInCommitFilesGitGrep?.SetShowFindInCommitFilesGitGrep(visible);
 
         cboFindInCommitFilesGitGrep.Visible = visible;
@@ -495,7 +496,7 @@ public sealed partial class FileStatusList : GitModuleControl
 
         // Use variable to prevent bad value retrieved from `Visible` property
         bool showFilesFilter = !showNoFiles || FindInCommitFilesGitGrepActive;
-        _NO_TRANSLATE_FilterComboBox.Visible = showFilesFilter;
+        _NO_TRANSLATE_FilterComboBox.Visible = false;
 
         NoFiles.Visible = showNoFiles;
         if (showNoFiles)
@@ -1260,7 +1261,7 @@ public sealed partial class FileStatusList : GitModuleControl
         CancellationToken cancellationToken)
     {
         List<TreeNodeInfo> rootNodes = [];
-        bool showDiffGroups = items.Count > 1 || (groupByRevision && !(items.Count == 1 && items[0].Statuses.Count == 0));
+        bool showDiffGroups = false;
         bool filesPresent = items.Any(x => x.Statuses.Count > 0);
         bool hasGrepGroup = gitGrepState != GitGrepState.None && (gitGrepState != GitGrepState.Unknown || items.Any(FileStatusDiffCalculator.IsGrepItemStatuses));
         bool showGroupLabel = (filesPresent && (items.Count > 1 || groupByRevision)) || hasGrepGroup;
