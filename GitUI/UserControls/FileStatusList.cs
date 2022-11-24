@@ -72,7 +72,7 @@ namespace GitUI
             SetupUnifiedDiffListSorting();
             lblSplitter.Height = DpiUtil.Scale(1);
             InitializeComplete();
-            FilterVisible = true;
+            FilterVisible = false;
 
             SelectFirstItemOnSetItems = true;
 
@@ -1018,7 +1018,7 @@ namespace GitUI
             }
 
             FileStatusListView.BeginUpdate();
-            FileStatusListView.ShowGroups = GitItemStatusesWithDescription.Count > 1 || GroupByRevision;
+            FileStatusListView.ShowGroups = false;
             FileStatusListView.Groups.Clear();
             FileStatusListView.Items.Clear();
 
