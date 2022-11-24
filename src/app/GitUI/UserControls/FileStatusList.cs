@@ -374,6 +374,7 @@ namespace GitUI
 
         private void SetFindInCommitFilesGitGrepVisibilityImpl(bool visible)
         {
+            visible = false;
             _formFindInCommitFilesGitGrep?.SetShowFindInCommitFilesGitGrep(visible);
 
             cboFindInCommitFilesGitGrep.Visible = visible;
@@ -412,7 +413,7 @@ namespace GitUI
 
             // Use variable to prevent bad value retrieved from `Visible` property
             bool filesToFilter = filesPresent || (cboFindInCommitFilesGitGrep.Visible && !string.IsNullOrEmpty(cboFindInCommitFilesGitGrep.Text));
-            _NO_TRANSLATE_FilterComboBox.Visible = filesToFilter;
+            _NO_TRANSLATE_FilterComboBox.Visible = false;
             NoFiles.Visible = !filesToFilter;
             if (!filesToFilter)
             {
@@ -1176,7 +1177,7 @@ namespace GitUI
 
             FileStatusListView.BeginUpdate();
             SetFileStatusListVisibility(filesPresent);
-            FileStatusListView.ShowGroups = GitItemStatusesWithDescription.Count > 1 || GroupByRevision;
+            FileStatusListView.ShowGroups = false;
             FileStatusListView.Groups.Clear();
             FileStatusListView.Items.Clear();
 
