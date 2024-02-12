@@ -1484,8 +1484,6 @@ public sealed partial class FormCommit : GitModuleForm
             return;
         }
 
-        Staged.ClearSelected();
-
         _currentSelection = Unstaged.SelectedItems.Items().ToList();
         FileStatusItem? item = Unstaged.SelectedItem;
         ShowChanges(item, staged: false);
@@ -1745,8 +1743,6 @@ public sealed partial class FormCommit : GitModuleForm
             return;
         }
 
-        Unstaged.ClearSelected();
-
         _currentSelection = Staged.SelectedItems.Items().ToList();
         FileStatusItem? item = Staged.SelectedItem;
         ShowChanges(item, staged: true);
@@ -1878,7 +1874,6 @@ public sealed partial class FormCommit : GitModuleForm
 
                     (GitRevision _, GitRevision indexRev, GitRevision workTreeRev) = GetHeadRevisions();
                     Unstaged.SetDiffs(indexRev, workTreeRev, unstagedFiles);
-                    Unstaged.ClearSelected();
                     _skipUpdate = false;
                     Unstaged.SelectStoredNextItem();
                 }
