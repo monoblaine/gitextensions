@@ -1611,7 +1611,6 @@ namespace GitUI.CommandsDialogs
             }
 
             ClearDiffViewIfNoFilesLeft();
-            Staged.ClearSelected();
 
             _currentSelection = Unstaged.SelectedItems.Items().ToList();
             FileStatusItem? item = Unstaged.SelectedItem;
@@ -1925,7 +1924,6 @@ namespace GitUI.CommandsDialogs
 
             ClearDiffViewIfNoFilesLeft();
 
-            Unstaged.ClearSelected();
             _currentSelection = Staged.SelectedItems.Items().ToList();
             var item = Staged.SelectedItem;
             ShowChanges(item, true);
@@ -2045,7 +2043,6 @@ namespace GitUI.CommandsDialogs
 
                         var (_, indexRev, workTreeRev) = GetHeadRevisions();
                         Unstaged.SetDiffs(indexRev, workTreeRev, unstagedFiles);
-                        Unstaged.ClearSelected();
                         _skipUpdate = false;
                         Unstaged.SelectStoredNextIndex();
                     }
