@@ -2828,9 +2828,9 @@ namespace GitUI.CommandsDialogs
             if (commitInfoPosition == CommitInfoPosition.BelowList)
             {
                 CommitInfoTabControl.SelectedIndexChanged -= CommitInfoTabControl_SelectedIndexChanged;
-                CommitInfoTabControl.InsertIfNotExists(0, CommitInfoTabPage);
+                CommitInfoTabControl.InsertIfNotExists(0, DiffTabPage);
                 CommitInfoTabControl.SelectedIndexChanged += CommitInfoTabControl_SelectedIndexChanged;
-                CommitInfoTabControl.SelectedTab = CommitInfoTabPage;
+                CommitInfoTabControl.SelectedTab = DiffTabPage;
 
                 RevisionsSplitContainer.FixedPanel = FixedPanel.Panel2;
                 RevisionInfo.Parent = CommitInfoTabPage;
