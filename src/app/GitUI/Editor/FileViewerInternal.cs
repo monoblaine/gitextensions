@@ -299,12 +299,12 @@ namespace GitUI.Editor
             // Restore position if contentIdentification matches the capture
             _currentViewPositionCache.Restore(contentIdentification);
 
-            if (_shouldScrollToBottom || _shouldScrollToTop)
+            if (_shouldScrollToBottom || _shouldScrollToTop || !AppSettings.RestoreTheScrollBarPositionInFileViewer)
             {
                 VScrollBar scrollBar = TextEditor.ActiveTextAreaControl.VScrollBar;
                 if (scrollBar.Visible)
                 {
-                    scrollBar.Value = _shouldScrollToTop ? 0 : Math.Max(0, scrollBar.Maximum - scrollBar.Height - _bottomBlankHeight);
+                    scrollBar.Value = (_shouldScrollToTop || !AppSettings.RestoreTheScrollBarPositionInFileViewer) ? 0 : Math.Max(0, scrollBar.Maximum - scrollBar.Height - _bottomBlankHeight);
                 }
 
                 _shouldScrollToTop = false;
