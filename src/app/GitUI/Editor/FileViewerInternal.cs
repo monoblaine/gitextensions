@@ -315,12 +315,12 @@ public partial class FileViewerInternal : GitModuleControl, IFileViewer
         // Restore position if contentIdentification matches the capture
         bool positionSet = _currentViewPositionCache.Restore(contentIdentification) && LineAtCaret > FirstLineAfterHeader;
 
-        if (_shouldScrollToBottom || _shouldScrollToTop)
+        if (_shouldScrollToBottom || _shouldScrollToTop || !AppSettings.RestoreTheScrollBarPositionInFileViewer)
         {
             VScrollBar scrollBar = TextEditor.ActiveTextAreaControl.VScrollBar;
             if (scrollBar.Visible)
             {
-                scrollBar.Value = _shouldScrollToTop ? 0 : Math.Max(0, scrollBar.Maximum - scrollBar.Height - _bottomBlankHeight);
+                scrollBar.Value = (_shouldScrollToTop || !AppSettings.RestoreTheScrollBarPositionInFileViewer) ? 0 : Math.Max(0, scrollBar.Maximum - scrollBar.Height - _bottomBlankHeight);
                 positionSet = true;
             }
 
