@@ -273,12 +273,12 @@ namespace GitUI.Editor
 
             _currentViewPositionCache.Restore(isDiff);
 
-            if (_shouldScrollToBottom || _shouldScrollToTop)
+            if (_shouldScrollToBottom || _shouldScrollToTop || true)
             {
                 var scrollBar = TextEditor.ActiveTextAreaControl.VScrollBar;
                 if (scrollBar.Visible)
                 {
-                    scrollBar.Value = _shouldScrollToTop ? 0 : Math.Max(0, scrollBar.Maximum - scrollBar.Height - _bottomBlankHeight);
+                    scrollBar.Value = (_shouldScrollToTop || true) ? 0 : Math.Max(0, scrollBar.Maximum - scrollBar.Height - _bottomBlankHeight);
                 }
 
                 _shouldScrollToTop = false;
