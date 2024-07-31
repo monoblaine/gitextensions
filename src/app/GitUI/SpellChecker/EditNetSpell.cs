@@ -82,19 +82,12 @@ public partial class EditNetSpell : GitModuleControl
     {
         get
         {
-            if (TextBox is null)
-            {
-                return string.Empty;
-            }
-
-            return _isWatermarkShowing ? string.Empty : TextBox.Text;
+            return TextBox is null ? string.Empty : TextBox.Text;
         }
         set
         {
-            HideWatermark();
             EvaluateForecolor();
             TextBox.Text = value;
-            ShowWatermark();
             OnTextAssigned();
         }
     }
@@ -158,28 +151,10 @@ public partial class EditNetSpell : GitModuleControl
         if (Enabled)
         {
             TextBox.ReadOnly = false;
-            ShowWatermark();
         }
         else
         {
             TextBox.ReadOnly = true;
-            HideWatermark();
-        }
-    }
-
-    private bool _isWatermarkShowing;
-    private string _watermarkText = "";
-    [Category("Appearance")]
-    [DefaultValue("")]
-    public string WatermarkText
-    {
-        get { return _watermarkText; }
-
-        set
-        {
-            HideWatermark();
-            _watermarkText = value;
-            ShowWatermark();
         }
     }
 
@@ -210,9 +185,7 @@ public partial class EditNetSpell : GitModuleControl
         get => TextBox.SelectedText;
         set
         {
-            HideWatermark();
             TextBox.SelectedText = value;
-            ShowWatermark();
         }
     }
 
@@ -233,8 +206,6 @@ public partial class EditNetSpell : GitModuleControl
         TextBox.DoubleClick += TextBox_DoubleClick;
 
         EnabledChanged += EditNetSpellEnabledChanged;
-
-        ShowWatermark();
 
         components = new Container();
         _spelling = new Spelling(components)
@@ -427,29 +398,25 @@ public partial class EditNetSpell : GitModuleControl
         _customUnderlines.IllFormedLines.Clear();
         _customUnderlines.Lines.Clear();
 
-        // Do not check spelling of watermark text
-        if (!_isWatermarkShowing)
+        try
         {
-            try
+            if (_spelling is not null && TextBox.Text.Length < 5000)
             {
-                if (_spelling is not null && TextBox.Text.Length < 5000)
-                {
-                    _spelling.Text = TextBox.Text;
-                    _spelling.ShowDialog = false;
+                _spelling.Text = TextBox.Text;
+                _spelling.ShowDialog = false;
 
-                    if (File.Exists(_spelling.Dictionary.DictionaryFile))
-                    {
-                        _spelling.SpellCheck();
-                    }
+                if (File.Exists(_spelling.Dictionary.DictionaryFile))
+                {
+                    _spelling.SpellCheck();
                 }
             }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex);
-            }
-
-            MarkLines();
         }
+        catch (Exception ex)
+        {
+            Trace.WriteLine(ex);
+        }
+
+        MarkLines();
 
         TextBox.Refresh();
     }
@@ -653,21 +620,18 @@ public partial class EditNetSpell : GitModuleControl
         _customUnderlines.Lines.Clear();
         _customUnderlines.IllFormedLines.Clear();
 
-        if (!_isWatermarkShowing)
+        OnTextChanged(e);
+
+        IDetachedSettings detachedSettings = Settings.Detached();
+
+        if (detachedSettings.Dictionary is "None" || TextBox.Text.Length < 4)
         {
-            OnTextChanged(e);
-
-            IDetachedSettings detachedSettings = Settings.Detached();
-
-            if (detachedSettings.Dictionary is "None" || TextBox.Text.Length < 4)
-            {
-                return;
-            }
-
-            SpellCheckTimer.Enabled = false;
-            SpellCheckTimer.Interval = 250;
-            SpellCheckTimer.Enabled = true;
+            return;
         }
+
+        SpellCheckTimer.Enabled = false;
+        SpellCheckTimer.Interval = 250;
+        SpellCheckTimer.Enabled = true;
     }
 
     private void TextBoxLeave(object sender, EventArgs e)
@@ -798,38 +762,6 @@ public partial class EditNetSpell : GitModuleControl
         int charIndexAtMousePosition = TextBox.GetCharIndexFromPosition(TextBox.PointToClient(MousePosition));
         (int start, int length) = _wordAtCursorExtractor.GetWordBounds(TextBox.Text, charIndexAtMousePosition);
         TextBox.Select(start, length);
-    }
-
-    private void ShowWatermark()
-    {
-        if (!ContainsFocus && string.IsNullOrEmpty(TextBox.Text) && TextBoxFont is not null)
-        {
-            _isWatermarkShowing = true;
-            TextBox.Font = new Font(TextBox.Font, FontStyle.Italic);
-            TextBox.ForeColor = SystemColors.GrayText;
-            TextBox.Text = WatermarkText;
-        }
-    }
-
-    private void HideWatermark()
-    {
-        if (_isWatermarkShowing && TextBoxFont is not null)
-        {
-            TextBox.Font = TextBoxFont;
-            _isWatermarkShowing = false;
-            TextBox.Text = string.Empty;
-            TextBox.ForeColor = SystemColors.WindowText;
-        }
-    }
-
-    private void TextBox_LostFocus(object sender, EventArgs e)
-    {
-        ShowWatermark();
-    }
-
-    private void TextBox_GotFocus(object sender, EventArgs e)
-    {
-        HideWatermark();
     }
 
     private void CutMenuItemClick(object sender, EventArgs e)

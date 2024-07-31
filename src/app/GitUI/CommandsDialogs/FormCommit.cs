@@ -54,9 +54,6 @@ public sealed partial class FormCommit : GitModuleForm
 
     private readonly TranslationString _enterCommitMessage = new("Please enter commit message");
     private readonly TranslationString _enterCommitMessageCaption = new("Commit message");
-    private readonly TranslationString _commitMessageDisabled = new("Commit Message is requested during commit");
-
-    private readonly TranslationString _enterCommitMessageHint = new("Enter commit message");
 
     private readonly TranslationString _mergeConflicts =
         new("There are unresolved merge conflicts, solve merge conflicts before committing.");
@@ -369,10 +366,6 @@ public sealed partial class FormCommit : GitModuleForm
         void ConfigureMessageBox()
         {
             CommitKind = commitKind;
-
-            Message.WatermarkText = _useFormCommitMessage
-                ? _enterCommitMessageHint.Text
-                : _commitMessageDisabled.Text;
         }
 
         void WorkaroundPaddingIncreaseBug()

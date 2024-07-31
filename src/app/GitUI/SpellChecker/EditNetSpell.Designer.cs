@@ -63,8 +63,6 @@ partial class EditNetSpell
         TextBox.KeyPress += TextBox_KeyPress;
         TextBox.KeyUp += TextBox_KeyUp;
         TextBox.Leave += TextBoxLeave;
-        TextBox.GotFocus += TextBox_GotFocus;
-        TextBox.LostFocus += TextBox_LostFocus;
         TextBox.MouseDown += TextBox_MouseDown;
         TextBox.WordWrap = false;
         // 
