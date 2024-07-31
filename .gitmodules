@@ -6,4 +6,4 @@
 	url = ../../gitextensions/conemu-inside.git
 [submodule "Externals/ICSharpCode.TextEditor"]
 	path = externals/ICSharpCode.TextEditor
-	url = ../../gitextensions/ICSharpCode.TextEditor.git
+	url = git@github.com:monoblaine/ICSharpCode.TextEditor.git
