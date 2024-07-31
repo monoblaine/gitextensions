@@ -1380,8 +1380,6 @@ namespace GitUI.CommandsDialogs
 
                     success = FormProcess.ShowDialog(this, UICommands, arguments: commitCmd, Module.WorkingDir, input: null, useDialogSettings: true);
 
-                    UICommands.RepoChangedNotifier.Notify();
-
                     if (!success)
                     {
                         return;
