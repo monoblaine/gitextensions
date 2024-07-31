@@ -78,7 +78,6 @@ namespace GitUI.CommandsDialogs.RepoHosting
             _bodyTB.Name = "_bodyTB";
             _bodyTB.Size = new Size(462, 124);
             _bodyTB.TabIndex = 1;
-            _bodyTB.WatermarkText = "";
             // 
             // _pullReqTargetsCB
             // 
