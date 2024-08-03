@@ -1,6 +1,5 @@
 ﻿using System.Drawing.Drawing2D;
 using GitExtUtils.GitUI;
-using Timer = System.Windows.Forms.Timer;
 
 namespace GitUI.UserControls
 {
@@ -11,30 +10,16 @@ namespace GitUI.UserControls
         private readonly int _circleRadius = DpiUtil.Scale(18);
 
         private readonly Color _color = SystemColors.ControlDarkDark;
-        private readonly Timer _timer;
         private readonly IReadOnlyList<Brush> _brushes;
         private readonly (float sin, float cos)[] _angles;
 
         private bool _isAnimating;
         private PointF _centre;
-        private int _progress;
 
         public bool IsAnimating
         {
             get => _isAnimating;
-            set
-            {
-                _isAnimating = value;
-
-                if (_isAnimating)
-                {
-                    _timer.Start();
-                }
-                else
-                {
-                    _timer.Stop();
-                }
-            }
+            set => _isAnimating = value;
         }
 
         public WaitSpinner()
@@ -47,13 +32,6 @@ namespace GitUI.UserControls
             _brushes = GetBrushes();
             _angles = GetAngles();
             UpdateCentre();
-
-            _timer = new Timer { Interval = 1000 / 30 }; // 30 fps
-            _timer.Tick += delegate
-            {
-                _progress = (_progress + 1) % _dotCount;
-                Invalidate();
-            };
             IsAnimating = true;
 
             Resize += delegate { UpdateCentre(); };
@@ -106,21 +84,11 @@ namespace GitUI.UserControls
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _timer.Dispose();
-            }
-
-            base.Dispose(disposing);
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
-            int p = _progress;
+            int p = 0;
             for (int i = 0; i < _dotCount; i++)
             {
                 p %= _dotCount;
