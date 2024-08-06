@@ -17,6 +17,22 @@ namespace GitExtensions
 {
     internal static class Program
     {
+        private class AltKeyFilter : IMessageFilter
+        {
+            public bool PreFilterMessage(ref Message m)
+            {
+                bool isKeyDown = m.Msg == 0x0104;
+
+                if (!isKeyDown)
+                {
+                    return false;
+                }
+
+                // Do not handle the Alt key if it's the only key pressed
+                return (int)m.LParam == 0x20380001;
+            }
+        }
+
         private static readonly ServiceContainer _serviceContainer = new();
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -124,6 +140,11 @@ namespace GitExtensions
             ManagedExtensibility.Initialise(userPluginsPath: AppSettings.UserPluginsPath);
 
             AppSettings.LoadSettings();
+
+            if (AppSettings.DoNotHandleSingleAltKeyPress)
+            {
+                Application.AddMessageFilter(new AltKeyFilter());
+            }
 
             if (EnvUtils.RunningOnWindows())
             {

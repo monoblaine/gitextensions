@@ -2122,6 +2122,13 @@ namespace GitCommands
             set => SetBool("RestoreTheScrollBarPositionInFileViewer", value);
         }
 
+        // Currently not configurable in UI (Set manually in settings file)
+        public static bool DoNotHandleSingleAltKeyPress
+        {
+            get => GetBool("DoNotHandleSingleAltKeyPress", false);
+            set => SetBool("DoNotHandleSingleAltKeyPress", value);
+        }
+
         public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
         private static IEnumerable<(string name, string value)> GetSettingsFromRegistry()
