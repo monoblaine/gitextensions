@@ -2121,6 +2121,13 @@ public static partial class AppSettings
         set => SetBool("RestoreTheScrollBarPositionInFileViewer", value);
     }
 
+    // Currently not configurable in UI (Set manually in settings file)
+    public static bool DoNotHandleSingleAltKeyPress
+    {
+        get => GetBool("DoNotHandleSingleAltKeyPress", false);
+        set => SetBool("DoNotHandleSingleAltKeyPress", value);
+    }
+
     public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
     public static ISetting<string> UninformativeRepoNameRegex { get; } = Setting.Create(DetailedSettingsPath, nameof(UninformativeRepoNameRegex), "app|(repo(sitory)?)");
