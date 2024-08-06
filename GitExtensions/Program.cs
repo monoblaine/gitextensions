@@ -21,6 +21,22 @@ namespace GitExtensions
 {
     internal static class Program
     {
+        private class AltKeyFilter : IMessageFilter
+        {
+            public bool PreFilterMessage(ref Message m)
+            {
+                var isKeyDown = m.Msg == 0x0104;
+
+                if (!isKeyDown)
+                {
+                    return false;
+                }
+
+                // Do not handle the Alt key if it's the only key pressed
+                return (int)m.LParam == 0x20380001;
+            }
+        }
+
         private static readonly ServiceContainer _serviceContainer = new();
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -40,6 +56,7 @@ namespace GitExtensions
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.AddMessageFilter(new AltKeyFilter());
 
             bool checkForIllegalCrossThreadCalls = false;
 #if !DEBUG
