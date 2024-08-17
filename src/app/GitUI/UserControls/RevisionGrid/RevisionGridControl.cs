@@ -95,7 +95,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
     private readonly NavigationHistory _navigationHistory = new();
     private readonly Control _loadingControlText;
     private readonly Control _loadingControlSpinner;
-    private readonly RevisionGridToolTipProvider _toolTipProvider;
     private readonly QuickSearchProvider _quickSearchProvider;
     private readonly ParentChildNavigationHistory _parentChildNavigationHistory;
     private readonly AuthorRevisionHighlighting _authorHighlighting;
@@ -198,8 +197,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
             SelectionChanged?.Invoke(this, e);
         };
 
-        _toolTipProvider = new RevisionGridToolTipProvider(_gridView);
-
         _quickSearchProvider = new QuickSearchProvider(_gridView, () => Module.WorkingDir);
 
         // Parent-child navigation can expect that SetSelectedRevision is always successful since it always uses first-parents
@@ -236,7 +233,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
         _gridView.CellMouseDown += OnGridViewCellMouseDown;
         _gridView.MouseDoubleClick += OnGridViewDoubleClick;
         _gridView.MouseClick += OnGridViewMouseClick;
-        _gridView.CellMouseMove += (_, e) => _toolTipProvider.OnCellMouseMove(e);
         _gridView.CellMouseEnter += _gridView_CellMouseEnter;
 
         // Allow to drop patch file on revision grid
@@ -294,7 +290,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
             //// _authorHighlighting not disposable
             //// _parentChildNavigationHistory not disposable
             //// _quickSearchProvider not disposable
-            //// _toolTipProvider  not disposable
             //// _loadingControlSync handled by this.Controls
             //// _loadingControlAsync handled by this.Controls
             //// _navigationHistory not disposable
@@ -348,8 +343,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
 
         Size size = TextRenderer.MeasureText(e.Graphics, text, font, bounds.Size, flags);
         TextRenderer.DrawText(e.Graphics, text, font, bounds, color, flags);
-
-        _toolTipProvider.SetTruncation(e.ColumnIndex, e.RowIndex, truncated: size.Width > bounds.Width);
 
         return size.Width;
     }
@@ -530,8 +523,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
         _gridView.ApplySettings(); // columns could change their Resizable state, e.g. the BuildStatusColumnProvider
 
         base.Refresh();
-
-        _toolTipProvider.Clear();
 
         // suppress the manual resizing of the last visible column because it will be resized when the maximized column is resized
         //// LINQ because the following did not work reliable:
@@ -816,14 +807,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
                 }
 
                 return true; // never select all revisions
-
-            case Keys.Escape:
-                if (_toolTipProvider.Hide())
-                {
-                    return true;
-                }
-
-                break;
         }
 
         return base.ProcessHotkey(keyData);
