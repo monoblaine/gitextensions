@@ -63,8 +63,7 @@ namespace GitCommands
 
                     var toolKey = _isDiff ? SettingKeyString.DiffToolKey : SettingKeyString.MergeToolKey;
                     var defaultTool = module.GetEffectiveSetting(toolKey);
-                    string output = module.GetCustomDiffMergeTools(_isDiff, cancellationToken);
-                    _tools = ParseCustomDiffMergeTool(output, defaultTool);
+                    _tools = Array.Empty<string>();
                 }
             }
             catch
