@@ -2128,6 +2128,13 @@ public static partial class AppSettings
         set => SetBool("DoNotHandleSingleAltKeyPress", value);
     }
 
+    // Currently not configurable in UI (Set manually in settings file)
+    public static bool ReadAndParseCustomDiffMergeTools
+    {
+        get => GetBool("ReadAndParseCustomDiffMergeTools", true);
+        set => SetBool("ReadAndParseCustomDiffMergeTools", value);
+    }
+
     public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
     public static ISetting<string> UninformativeRepoNameRegex { get; } = Setting.Create(DetailedSettingsPath, nameof(UninformativeRepoNameRegex), "app|(repo(sitory)?)");
