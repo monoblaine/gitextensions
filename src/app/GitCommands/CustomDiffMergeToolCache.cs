@@ -62,10 +62,17 @@ namespace GitCommands
                     await TaskScheduler.Default;
                     cancellationToken.ThrowIfCancellationRequested();
 
-                    string toolKey = _isDiff ? SettingKeyString.DiffToolKey : SettingKeyString.MergeToolKey;
-                    string defaultTool = module.GetEffectiveSetting(toolKey);
-                    string output = module.GetCustomDiffMergeTools(_isDiff, cancellationToken);
-                    _tools = ParseCustomDiffMergeTool(output, defaultTool);
+                    if (AppSettings.ReadAndParseCustomDiffMergeTools)
+                    {
+                        string toolKey = _isDiff ? SettingKeyString.DiffToolKey : SettingKeyString.MergeToolKey;
+                        string defaultTool = module.GetEffectiveSetting(toolKey);
+                        string output = module.GetCustomDiffMergeTools(_isDiff, cancellationToken);
+                        _tools = ParseCustomDiffMergeTool(output, defaultTool);
+                    }
+                    else
+                    {
+                        _tools = Array.Empty<string>();
+                    }
                 }
             }
             catch
