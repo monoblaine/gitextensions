@@ -61,10 +61,22 @@ namespace GitUI.CommitInfo
                 rtbRevisionHeader.SuspendLayout();
 
                 rtbRevisionHeader.Clear();
-                rtbRevisionHeader.SetXHTMLText(header);
 
-                rtbRevisionHeader.SelectionStart = 0; // scroll up
-                rtbRevisionHeader.ScrollToCaret();    // scroll up
+                if (MiscUtil.IsRunningUnderWine)
+                {
+                    rtbRevisionHeader.SetXHTMLTextAsPlainText(header);
+                }
+                else
+                {
+                    rtbRevisionHeader.SetXHTMLText(header);
+                }
+
+                rtbRevisionHeader.SelectionStart = 0;  // scroll up
+
+                if (!MiscUtil.IsRunningUnderWine)
+                {
+                    rtbRevisionHeader.ScrollToCaret(); // scroll up
+                }
 
                 rtbRevisionHeader.ResumeLayout(true);
 
