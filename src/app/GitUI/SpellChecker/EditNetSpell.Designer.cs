@@ -58,6 +58,7 @@
             TextBox.Size = new Size(386, 336);
             TextBox.TabIndex = 1;
             TextBox.Text = "";
+            TextBox.Font = GitCommands.AppSettings.CommitFont;
             TextBox.KeyDown += TextBox_KeyDown;
             TextBox.KeyPress += TextBox_KeyPress;
             TextBox.KeyUp += TextBox_KeyUp;
