@@ -62,10 +62,24 @@ public partial class CommitInfoHeader : GitModuleControl
             rtbRevisionHeader.SuspendLayout();
 
             rtbRevisionHeader.Clear();
-            rtbRevisionHeader.SetXHTMLText(header);
 
-            rtbRevisionHeader.SelectionStart = 0; // scroll up
-            rtbRevisionHeader.ScrollToCaret();    // scroll up
+            bool usePlainText = AppSettings.RenderRevisionHeaderAsPlainTextOnWine && MiscUtil.IsRunningUnderWine;
+
+            if (usePlainText)
+            {
+                rtbRevisionHeader.SetXHTMLTextAsPlainText(header);
+            }
+            else
+            {
+                rtbRevisionHeader.SetXHTMLText(header);
+            }
+
+            rtbRevisionHeader.SelectionStart = 0;  // scroll up
+
+            if (!usePlainText)
+            {
+                rtbRevisionHeader.ScrollToCaret(); // scroll up
+            }
 
             rtbRevisionHeader.ResumeLayout(true);
 

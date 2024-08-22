@@ -2163,6 +2163,13 @@ public static partial class AppSettings
         set => SetString("FileExplorerProcessName", value);
     }
 
+    // Currently not configurable in UI (Set manually in settings file)
+    public static bool RenderRevisionHeaderAsPlainTextOnWine
+    {
+        get => GetBool("RenderRevisionHeaderAsPlainTextOnWine", false);
+        set => SetBool("RenderRevisionHeaderAsPlainTextOnWine", value);
+    }
+
     public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
     public static ISetting<string> UninformativeRepoNameRegex { get; } = Setting.Create(DetailedSettingsPath, nameof(UninformativeRepoNameRegex), "app|(repo(sitory)?)");
