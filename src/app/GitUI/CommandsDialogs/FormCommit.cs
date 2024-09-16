@@ -1261,6 +1261,7 @@ public sealed partial class FormCommit : GitModuleForm
                     return;
                 }
 
+                SelectedDiff.Clear();
                 ScriptsRunner.RunEventScripts(ScriptEvent.AfterCommit, this);
 
                 // Message.Text has been used and stored
