@@ -1411,6 +1411,7 @@ namespace GitUI.CommandsDialogs
                         return;
                     }
 
+                    SelectedDiff.Clear();
                     ScriptsRunner.RunEventScripts(ScriptEvent.AfterCommit, this);
 
                     // Message.Text has been used and stored
