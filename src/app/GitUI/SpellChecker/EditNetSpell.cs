@@ -52,6 +52,8 @@ public partial class EditNetSpell : GitModuleControl
 
     private readonly IWordAtCursorExtractor _wordAtCursorExtractor;
 
+    private Cursor _storedCursor = null;
+
     public Font TextBoxFont { get; set; }
 
     public bool IsUndoInProgress;
@@ -598,6 +600,7 @@ public partial class EditNetSpell : GitModuleControl
 
     private void TextBoxTextChanged(object sender, EventArgs e)
     {
+        Cursor.Current ??= _storedCursor;
         Validates.NotNull(_customUnderlines);
         if (_customUnderlines.IsImeStartingComposition)
         {
@@ -732,6 +735,7 @@ public partial class EditNetSpell : GitModuleControl
 
     private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
     {
+        _storedCursor = Cursor.Current;
         bool isSeparator = e.KeyChar.IsSeparator();
         _disableAutoCompleteTriggerOnTextUpdate = isSeparator;
 
