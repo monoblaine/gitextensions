@@ -43,7 +43,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Cancel = new System.Windows.Forms.Button();
             this.Delete = new System.Windows.Forms.Button();
-            this.pbRevisions = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.branchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BranchesGrid)).BeginInit();
@@ -152,7 +151,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel2.Controls.Add(this.Cancel, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.Delete, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.pbRevisions, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 387);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -182,15 +180,6 @@
             this.Delete.Text = "Delete";
             this.Delete.UseVisualStyleBackColor = true;
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
-            // 
-            // pbRevisions
-            // 
-            this.pbRevisions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbRevisions.Location = new System.Drawing.Point(2, 2);
-            this.pbRevisions.Margin = new System.Windows.Forms.Padding(2);
-            this.pbRevisions.Name = "pbRevisions";
-            this.pbRevisions.Size = new System.Drawing.Size(450, 27);
-            this.pbRevisions.TabIndex = 2;
             // 
             // label1
             // 
@@ -236,7 +225,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button Delete;
-        private System.Windows.Forms.ProgressBar pbRevisions;
         private System.Windows.Forms.BindingSource gitObjectBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn sHADataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn;

@@ -31,9 +31,6 @@ namespace GitUI.CommandsDialogs.BrowseDialog
 
             InitializeComponent();
             InitializeComplete();
-
-            progressBar1.Visible = true;
-            progressBar1.Style = ProgressBarStyle.Marquee;
         }
 
         public void SearchForUpdatesAndShow(IWin32Window ownerWindow, bool alwaysShow)
@@ -135,8 +132,6 @@ namespace GitUI.CommandsDialogs.BrowseDialog
             {
                 await this.SwitchToMainThreadAsync();
 
-                progressBar1.Visible = false;
-
                 if (UpdateFound)
                 {
                     btnUpdateNow.Visible = true;
@@ -177,7 +172,6 @@ namespace GitUI.CommandsDialogs.BrowseDialog
         private void btnUpdateNow_Click(object sender, EventArgs e)
         {
             linkChangeLog.Visible = false;
-            progressBar1.Visible = true;
             btnUpdateNow.Enabled = false;
             UpdateLabel.Text = _downloadingUpdate.Text;
 
@@ -206,7 +200,6 @@ namespace GitUI.CommandsDialogs.BrowseDialog
                     process.Start();
 
                     await this.SwitchToMainThreadAsync();
-                    progressBar1.Visible = false;
                     Close();
                     Application.Exit();
                 }

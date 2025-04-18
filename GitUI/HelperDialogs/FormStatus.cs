@@ -48,9 +48,6 @@ namespace GitUI.HelperDialogs
                 KeepDialogOpen.Hide();
             }
 
-            Controls.SetChildIndex(ProgressBar, 1);
-            ProgressBar.Dock = DockStyle.Bottom;
-
             InitializeComplete();
         }
 
@@ -117,7 +114,6 @@ namespace GitUI.HelperDialogs
                 }
             }
 
-            form.ProgressBar.Visible = false;
             form.KeepDialogOpen.Visible = false;
             form.Abort.Visible = false;
 
@@ -160,7 +156,6 @@ namespace GitUI.HelperDialogs
             try
             {
                 AppendMessage("Done");
-                ProgressBar.Visible = false;
                 Ok.Enabled = true;
                 Ok.Focus();
                 AcceptButton = Ok;
@@ -188,7 +183,6 @@ namespace GitUI.HelperDialogs
             SetIcon(Images.StatusBadgeWaiting);
             ConsoleOutput.Reset();
             OutputLog.Clear();
-            ProgressBar.Visible = true;
             Ok.Enabled = false;
             ActiveControl = null;
         }
@@ -208,8 +202,6 @@ namespace GitUI.HelperDialogs
             int index = text.LastIndexOf('%');
             if (index > 4 && int.TryParse(text.Substring(index - 3, 3), out var progressValue) && progressValue >= 0)
             {
-                ProgressBar.Style = ProgressBarStyle.Blocks;
-                ProgressBar.Value = Math.Min(100, progressValue);
                 TaskbarProgress.SetProgress(TaskbarProgressBarState.Normal, progressValue, 100);
             }
 

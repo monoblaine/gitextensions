@@ -16,7 +16,6 @@
         private void InitializeComponent()
         {
             this.Ok = new System.Windows.Forms.Button();
-            this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.KeepDialogOpen = new System.Windows.Forms.CheckBox();
             this.Abort = new System.Windows.Forms.Button();
             this.pnlOutput = new System.Windows.Forms.Panel();
@@ -51,18 +50,6 @@
             this.Ok.UseCompatibleTextRendering = true;
             this.Ok.UseVisualStyleBackColor = true;
             this.Ok.Click += new System.EventHandler(this.Ok_Click);
-            // 
-            // ProgressBar
-            // 
-            this.ProgressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ProgressBar.Location = new System.Drawing.Point(0, 246);
-            this.ProgressBar.Margin = new System.Windows.Forms.Padding(0);
-            this.ProgressBar.MarqueeAnimationSpeed = 1;
-            this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.Size = new System.Drawing.Size(549, 3);
-            this.ProgressBar.Step = 50;
-            this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.ProgressBar.TabIndex = 0;
             // 
             // KeepDialogOpen
             // 
@@ -107,7 +94,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.Abort;
             this.ClientSize = new System.Drawing.Size(549, 288);
-            this.Controls.Add(this.ProgressBar);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 200);
@@ -115,7 +101,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Process";
             this.Controls.SetChildIndex(this.ControlsPanel, 0);
-            this.Controls.SetChildIndex(this.ProgressBar, 0);
             this.Controls.SetChildIndex(this.MainPanel, 0);
             this.MainPanel.ResumeLayout(false);
             this.ControlsPanel.ResumeLayout(false);
@@ -127,7 +112,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar ProgressBar;
         protected System.Windows.Forms.Button Ok;
         protected System.Windows.Forms.CheckBox KeepDialogOpen;
         protected System.Windows.Forms.Button Abort;

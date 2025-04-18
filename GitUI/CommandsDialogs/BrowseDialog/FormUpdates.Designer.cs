@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.UpdateLabel = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.linkChangeLog = new System.Windows.Forms.LinkLabel();
             this.btnUpdateNow = new System.Windows.Forms.Button();
             this.linkDirectDownload = new System.Windows.Forms.LinkLabel();
@@ -45,14 +44,6 @@
             this.UpdateLabel.Size = new System.Drawing.Size(111, 13);
             this.UpdateLabel.TabIndex = 0;
             this.UpdateLabel.Text = "Searching for updates";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(16, 35);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(424, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 1;
             // 
             // linkChangeLog
             // 
@@ -117,7 +108,6 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.linkChangeLog);
             this.Controls.Add(this.UpdateLabel);
-            this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -134,7 +124,6 @@
         #endregion
 
         private System.Windows.Forms.Label UpdateLabel;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.LinkLabel linkChangeLog;
         private System.Windows.Forms.Button btnUpdateNow;
         private System.Windows.Forms.LinkLabel linkDirectDownload;

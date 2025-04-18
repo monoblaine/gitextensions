@@ -116,11 +116,6 @@ namespace GitExtensions.Plugins.FindLargeFiles
                         };
 
                         string[] objects = _gitCommands.GitExecutable.GetOutput(args).Split('\n');
-                        ThreadHelper.JoinableTaskFactory.Run(async () =>
-                        {
-                            await pbRevisions.SwitchToMainThreadAsync();
-                            pbRevisions.Value = pbRevisions.Value + (int)((_revList.Length * 0.1f) / packFiles.Length);
-                        });
                         foreach (var gitObject in objects.Where(x => x.Contains(" blob ")))
                         {
                             string[] dataFields = gitObject.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -142,11 +137,6 @@ namespace GitExtensions.Plugins.FindLargeFiles
 
                 ThreadHelper.JoinableTaskFactory.Run(async () =>
                 {
-                    await pbRevisions.SwitchToMainThreadAsync();
-                    pbRevisions.Hide();
-                });
-                ThreadHelper.JoinableTaskFactory.Run(async () =>
-                {
                     await BranchesGrid.SwitchToMainThreadAsync();
                     BranchesGrid.ReadOnly = false;
                 });
@@ -162,7 +152,6 @@ namespace GitExtensions.Plugins.FindLargeFiles
 
             GitArgumentBuilder args = new("rev-list") { "HEAD" };
             _revList = _gitCommands.GitExecutable.GetOutput(args).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            pbRevisions.Maximum = (int)(_revList.Length * 1.1f);
             BranchesGrid.DataSource = _gitObjects;
             Thread thread = new(FindLargeFilesFunction);
             thread.Start();
@@ -173,11 +162,6 @@ namespace GitExtensions.Plugins.FindLargeFiles
             var thresholdSize = (int)(threshold * 1024 * 1024);
             for (int i = 0; i < _revList.Length; i++)
             {
-                ThreadHelper.JoinableTaskFactory.Run(async () =>
-                {
-                    await pbRevisions.SwitchToMainThreadAsync();
-                    pbRevisions.Value = i;
-                });
                 string rev = _revList[i];
                 GitArgumentBuilder args = new("ls-tree")
                 {
