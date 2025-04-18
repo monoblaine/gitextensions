@@ -51,9 +51,6 @@ public partial class FormStatus : GitExtensionsDialog
             KeepDialogOpen.Hide();
         }
 
-        Controls.SetChildIndex(ProgressBar, 1);
-        ProgressBar.Dock = DockStyle.Bottom;
-
         InitializeComplete();
     }
 
@@ -123,7 +120,6 @@ public partial class FormStatus : GitExtensionsDialog
             }
         }
 
-        form.ProgressBar.Visible = false;
         form.KeepDialogOpen.Visible = false;
         form.ShowPassword.Visible = false;
         form.PasswordInput.Visible = false;
@@ -194,7 +190,6 @@ public partial class FormStatus : GitExtensionsDialog
             AppendMessage("Done");
             ShowPassword.Visible = false;
             PasswordInput.Visible = false;
-            ProgressBar.Visible = false;
             Ok.Enabled = true;
             Ok.Focus();
             AcceptButton = Ok;
@@ -223,7 +218,6 @@ public partial class FormStatus : GitExtensionsDialog
         OutputLog.Clear();
         ShowPassword.Visible = true;
         PasswordInput.Visible = ShowPassword.CheckState != CheckState.Unchecked;
-        ProgressBar.Visible = true;
         Ok.Enabled = false;
         ActiveControl = PasswordInput.Visible ? PasswordInput : null;
     }
@@ -243,8 +237,6 @@ public partial class FormStatus : GitExtensionsDialog
         int index = text.LastIndexOf('%');
         if (index > 4 && int.TryParse(text.Substring(index - 3, 3), out int progressValue) && progressValue >= 0)
         {
-            ProgressBar.Style = ProgressBarStyle.Blocks;
-            ProgressBar.Value = Math.Min(100, progressValue);
             TaskbarProgress.SetProgress(TaskbarProgressBarState.Normal, progressValue, 100);
         }
 

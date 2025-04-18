@@ -64,7 +64,6 @@ partial class FormResolveConflicts
         flowLayoutPanel1 = new FlowLayoutPanel();
         tableLayoutPanel5 = new TableLayoutPanel();
         gotoUserManualControl1 = new GitUI.UserControls.GotoUserManualControl();
-        progressBar = new ProgressBar();
         ((System.ComponentModel.ISupportInitialize)(ConflictedFiles)).BeginInit();
         toolTip = new ToolTip(components);
         ConflictedFilesContextMenu.SuspendLayout();
@@ -510,7 +509,6 @@ partial class FormResolveConflicts
         flowLayoutPanel1.Controls.Add(startMergetool);
         flowLayoutPanel1.Controls.Add(Rescan);
         flowLayoutPanel1.Controls.Add(Reset);
-        flowLayoutPanel1.Controls.Add(progressBar);
         flowLayoutPanel1.Dock = DockStyle.Fill;
         flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
         flowLayoutPanel1.Location = new Point(470, 3);
@@ -518,15 +516,6 @@ partial class FormResolveConflicts
         flowLayoutPanel1.Size = new Size(146, 290);
         flowLayoutPanel1.TabIndex = 0;
         flowLayoutPanel1.WrapContents = false;
-        // 
-        // progressBar
-        // 
-        progressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-        progressBar.Location = new Point(3, 127);
-        progressBar.Name = "progressBar";
-        progressBar.Size = new Size(140, 24);
-        progressBar.TabIndex = 7;
-        progressBar.Visible = false;
         // 
         // tableLayoutPanel5
         // 
@@ -635,6 +624,5 @@ partial class FormResolveConflicts
     private FlowLayoutPanel flowLayoutPanel1;
     private TableLayoutPanel tableLayoutPanel5;
     private UserControls.GotoUserManualControl gotoUserManualControl1;
-    private ProgressBar progressBar;
     private ToolTip toolTip;
 }

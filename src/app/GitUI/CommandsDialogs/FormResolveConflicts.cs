@@ -488,24 +488,6 @@ public partial class FormResolveConflicts : GitModuleForm
         OpenMergeTool();
     }
 
-    private void StopAndHideProgressBar()
-    {
-        progressBar.Visible = false;
-    }
-
-    private void IncrementProgressBarValue()
-    {
-        progressBar.Value++;
-    }
-
-    private void StartProgressBarWithMaxValue(int maximum)
-    {
-        progressBar.Minimum = 0;
-        progressBar.Maximum = maximum;
-        progressBar.Value = 0;
-        progressBar.Visible = true;
-    }
-
     private void ResolveItemConflict(ConflictData item)
     {
         ItemType itemType = GetItemType(item.Filename);
@@ -838,18 +820,14 @@ public partial class FormResolveConflicts : GitModuleForm
         {
             IReadOnlyList<ConflictData> conflictItems = GetConflicts();
 
-            StartProgressBarWithMaxValue(conflictItems.Count);
             foreach (ConflictData conflictItem in conflictItems)
             {
                 if (CheckForBaseRevision(conflictItem))
                 {
                     ChooseBaseOnConflict(conflictItem.Base.Filename);
                 }
-
-                IncrementProgressBarValue();
             }
 
-            StopAndHideProgressBar();
             Initialize();
         }
     }
@@ -867,18 +845,14 @@ public partial class FormResolveConflicts : GitModuleForm
         using (WaitCursorScope.Enter())
         {
             IReadOnlyList<ConflictData> conflictItems = GetConflicts();
-            StartProgressBarWithMaxValue(conflictItems.Count);
             foreach (ConflictData conflictItem in conflictItems)
             {
                 if (CheckForLocalRevision(conflictItem))
                 {
                     ChooseLocalOnConflict(conflictItem.Filename);
                 }
-
-                IncrementProgressBarValue();
             }
 
-            StopAndHideProgressBar();
             Initialize();
         }
     }
@@ -896,18 +870,14 @@ public partial class FormResolveConflicts : GitModuleForm
         using (WaitCursorScope.Enter())
         {
             IReadOnlyList<ConflictData> conflictItems = GetConflicts();
-            StartProgressBarWithMaxValue(conflictItems.Count);
             foreach (ConflictData conflictItem in conflictItems)
             {
                 if (CheckForRemoteRevision(conflictItem))
                 {
                     ChooseRemoteOnConflict(conflictItem.Filename);
                 }
-
-                IncrementProgressBarValue();
             }
 
-            StopAndHideProgressBar();
             Initialize();
         }
     }
@@ -1234,19 +1204,15 @@ public partial class FormResolveConflicts : GitModuleForm
                 _filesDeletedLocallyAndModifiedRemotelySolved = _filesDeletedLocallyAndModifiedRemotelyCount;
                 _filesModifiedLocallyAndDeletedRemotelySolved = _filesModifiedLocallyAndDeletedRemotelyCount;
 
-                StartProgressBarWithMaxValue(_conflictItemsCount);
-
                 _solveMergeConflictApplyToAll = false;
                 foreach (ConflictData conflictData in filesDeletedLocallyAndModifiedRemotely)
                 {
-                    IncrementProgressBarValue();
                     ResolveItemConflict(conflictData);
                 }
 
                 _solveMergeConflictApplyToAll = false;
                 foreach (ConflictData conflictData in filesModifiedLocallyAndDeletedRemotely)
                 {
-                    IncrementProgressBarValue();
                     ResolveItemConflict(conflictData);
                 }
 
@@ -1254,14 +1220,12 @@ public partial class FormResolveConflicts : GitModuleForm
                 _solveMergeConflictApplyToAll = false;
                 foreach (ConflictData conflictData in filesRemaining)
                 {
-                    IncrementProgressBarValue();
                     ResolveItemConflict(conflictData);
                 }
             }
             finally
             {
                 _solveMergeConflictApplyToAll = false;
-                StopAndHideProgressBar();
                 Initialize();
             }
         }

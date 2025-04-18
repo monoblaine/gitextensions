@@ -43,7 +43,6 @@ partial class FindLargeFilesForm
         tableLayoutPanel2 = new TableLayoutPanel();
         Cancel = new Button();
         Delete = new Button();
-        pbRevisions = new ProgressBar();
         label1 = new Label();
         branchBindingSource = new BindingSource(components);
         ((System.ComponentModel.ISupportInitialize)(BranchesGrid)).BeginInit();
@@ -152,7 +151,6 @@ partial class FindLargeFilesForm
         tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
         tableLayoutPanel2.Controls.Add(Cancel, 2, 0);
         tableLayoutPanel2.Controls.Add(Delete, 1, 0);
-        tableLayoutPanel2.Controls.Add(pbRevisions, 0, 0);
         tableLayoutPanel2.Dock = DockStyle.Fill;
         tableLayoutPanel2.Location = new Point(3, 387);
         tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -182,15 +180,6 @@ partial class FindLargeFilesForm
         Delete.Text = "Delete";
         Delete.UseVisualStyleBackColor = true;
         Delete.Click += Delete_Click;
-        // 
-        // pbRevisions
-        // 
-        pbRevisions.Dock = DockStyle.Fill;
-        pbRevisions.Location = new Point(2, 2);
-        pbRevisions.Margin = new Padding(2);
-        pbRevisions.Name = "pbRevisions";
-        pbRevisions.Size = new Size(450, 27);
-        pbRevisions.TabIndex = 2;
         // 
         // label1
         // 
@@ -236,7 +225,6 @@ partial class FindLargeFilesForm
     private TableLayoutPanel tableLayoutPanel2;
     private Button Cancel;
     private Button Delete;
-    private ProgressBar pbRevisions;
     private BindingSource gitObjectBindingSource;
     private DataGridViewTextBoxColumn sHADataGridViewTextBoxColumn;
     private DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn;
