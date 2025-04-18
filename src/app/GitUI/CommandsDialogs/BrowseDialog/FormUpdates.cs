@@ -30,9 +30,6 @@ public partial class FormUpdates : GitExtensionsDialog
 
         InitializeComponent();
         InitializeComplete();
-
-        progressBar1.Visible = true;
-        progressBar1.Style = ProgressBarStyle.Marquee;
     }
 
     public void SearchForUpdatesAndShow(IWin32Window ownerWindow, bool alwaysShow)
@@ -134,8 +131,6 @@ public partial class FormUpdates : GitExtensionsDialog
         {
             await this.SwitchToMainThreadAsync();
 
-            progressBar1.Visible = false;
-
             if (UpdateFound)
             {
                 btnUpdateNow.Visible = !AppSettings.IsPortable();
@@ -185,7 +180,6 @@ public partial class FormUpdates : GitExtensionsDialog
     private void btnUpdateNow_Click(object sender, EventArgs e)
     {
         linkChangeLog.Visible = false;
-        progressBar1.Visible = true;
         btnUpdateNow.Enabled = false;
         UpdateLabel.Text = _downloadingUpdate.Text;
 
@@ -214,7 +208,6 @@ public partial class FormUpdates : GitExtensionsDialog
                 process.Start();
 
                 await this.SwitchToMainThreadAsync();
-                progressBar1.Visible = false;
                 Close();
                 Application.Exit();
             }

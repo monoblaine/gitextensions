@@ -18,7 +18,6 @@ namespace GitUI.HelperDialogs
         private void InitializeComponent()
         {
             Ok = new Button();
-            ProgressBar = new ProgressBar();
             KeepDialogOpen = new CheckBox();
             ShowPassword = new CheckBox();
             Abort = new Button();
@@ -56,18 +55,6 @@ namespace GitUI.HelperDialogs
             Ok.UseCompatibleTextRendering = true;
             Ok.UseVisualStyleBackColor = true;
             Ok.Click += Ok_Click;
-            // 
-            // ProgressBar
-            // 
-            ProgressBar.Dock = DockStyle.Bottom;
-            ProgressBar.Location = new Point(0, 246);
-            ProgressBar.Margin = new Padding(0);
-            ProgressBar.MarqueeAnimationSpeed = 1;
-            ProgressBar.Name = "ProgressBar";
-            ProgressBar.Size = new Size(549, 3);
-            ProgressBar.Step = 50;
-            ProgressBar.Style = ProgressBarStyle.Marquee;
-            ProgressBar.TabIndex = 0;
             // 
             // KeepDialogOpen
             // 
@@ -135,7 +122,6 @@ namespace GitUI.HelperDialogs
             AutoScaleMode = AutoScaleMode.Dpi;
             CancelButton = Abort;
             ClientSize = new Size(549, 327);
-            Controls.Add(ProgressBar);
             Controls.Add(PasswordInput);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -145,7 +131,6 @@ namespace GitUI.HelperDialogs
             Text = "Process";
             Controls.SetChildIndex(ControlsPanel, 0);
             Controls.SetChildIndex(PasswordInput, 0);
-            Controls.SetChildIndex(ProgressBar, 0);
             Controls.SetChildIndex(MainPanel, 0);
             MainPanel.ResumeLayout(false);
             ControlsPanel.ResumeLayout(false);
@@ -156,7 +141,6 @@ namespace GitUI.HelperDialogs
 
         #endregion
 
-        private ProgressBar ProgressBar;
         protected PasswordInput PasswordInput;
         protected Button Ok;
         protected CheckBox KeepDialogOpen;

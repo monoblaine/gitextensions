@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             UpdateLabel = new Label();
-            progressBar1 = new ProgressBar();
             linkChangeLog = new LinkLabel();
             btnUpdateNow = new Button();
             linkDirectDownload = new LinkLabel();
@@ -58,16 +57,6 @@
             UpdateLabel.Size = new Size(426, 15);
             UpdateLabel.TabIndex = 0;
             UpdateLabel.Text = "Searching for updates";
-            // 
-            // progressBar1
-            // 
-            progressBar1.Dock = DockStyle.Fill;
-            progressBar1.Location = new Point(3, 18);
-            progressBar1.MinimumSize = new Size(0, 20);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(426, 20);
-            progressBar1.Style = ProgressBarStyle.Continuous;
-            progressBar1.TabIndex = 1;
             // 
             // linkChangeLog
             // 
@@ -115,14 +104,12 @@
             tlpnlContent.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tlpnlContent.ColumnStyles.Add(new ColumnStyle());
             tlpnlContent.Controls.Add(UpdateLabel, 0, 0);
-            tlpnlContent.Controls.Add(progressBar1, 0, 1);
-            tlpnlContent.Controls.Add(linkChangeLog, 0, 2);
+            tlpnlContent.Controls.Add(linkChangeLog, 0, 1);
             tlpnlContent.Dock = DockStyle.Fill;
             tlpnlContent.Location = new Point(12, 12);
             tlpnlContent.Margin = new Padding(0);
             tlpnlContent.Name = "tlpnlContent";
-            tlpnlContent.RowCount = 4;
-            tlpnlContent.RowStyles.Add(new RowStyle());
+            tlpnlContent.RowCount = 3;
             tlpnlContent.RowStyles.Add(new RowStyle());
             tlpnlContent.RowStyles.Add(new RowStyle());
             tlpnlContent.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -153,7 +140,6 @@
         #endregion
 
         private Label UpdateLabel;
-        private ProgressBar progressBar1;
         private LinkLabel linkChangeLog;
         private Button btnUpdateNow;
         private LinkLabel linkDirectDownload;
