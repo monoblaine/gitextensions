@@ -39,10 +39,8 @@ namespace GitUI.CommandsDialogs
 
             RevisionGrid.RevisionsLoading += (sender, e) =>
             {
-                // The FileTree tab should be shown at first start, in "filehistory" mode
                 if (isBlame)
                 {
-                    CommitInfoTabControl.SelectedTab = TreeTabPage;
                     isBlame = false;
                 }
 
