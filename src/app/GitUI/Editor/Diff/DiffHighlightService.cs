@@ -13,14 +13,28 @@ namespace GitUI.Editor.Diff;
 /// </summary>
 public abstract class DiffHighlightService : TextHighlightService
 {
-    private static readonly Color _addedBackColor = AppColor.AnsiTerminalGreenBackNormal.GetThemeColor();
+    private static readonly Color _addedBackColor;
     private static readonly Color _addedForeColor = AppColor.AnsiTerminalGreenForeBold.GetThemeColor();
-    private static readonly Color _removedBackColor = AppColor.AnsiTerminalRedBackNormal.GetThemeColor();
+    private static readonly Color _removedBackColor;
     private static readonly Color _removedForeColor = AppColor.AnsiTerminalRedForeBold.GetThemeColor();
 
     protected readonly bool _useGitColoring;
     protected readonly List<TextMarker> _textMarkers = [];
     protected DiffLinesInfo _diffLinesInfo;
+
+    static DiffHighlightService()
+    {
+        if (AppSettings.UseDarkerBackColorsInDiffHighlightService)
+        {
+            _addedBackColor = AppColor.AnsiTerminalGreenBackBold.GetThemeColor();
+            _removedBackColor = AppColor.AnsiTerminalRedBackBold.GetThemeColor();
+        }
+        else
+        {
+            _addedBackColor = AppColor.AnsiTerminalGreenBackNormal.GetThemeColor();
+            _removedBackColor = AppColor.AnsiTerminalRedBackNormal.GetThemeColor();
+        }
+    }
 
     public DiffHighlightService(ref string text, bool useGitColoring)
     {
