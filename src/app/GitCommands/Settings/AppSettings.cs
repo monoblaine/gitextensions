@@ -2136,6 +2136,13 @@ public static partial class AppSettings
     }
 
     // Currently not configurable in UI (Set manually in settings file)
+    public static bool UseDarkerBackColorsInDiffHighlightService
+    {
+        get => GetBool("UseDarkerBackColorsInDiffHighlightService", false);
+        set => SetBool("UseDarkerBackColorsInDiffHighlightService", value);
+    }
+
+    // Currently not configurable in UI (Set manually in settings file)
     public static string FileExplorerProcessName
     {
         get => GetString("FileExplorerProcessName", "explorer.exe");
