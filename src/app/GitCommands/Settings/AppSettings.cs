@@ -2144,6 +2144,20 @@ namespace GitCommands
         }
 
         // Currently not configurable in UI (Set manually in settings file)
+        public static bool OverrideColorDiffOldConfig
+        {
+            get => GetBool("OverrideColorDiffOldConfig", false);
+            set => SetBool("OverrideColorDiffOldConfig", value);
+        }
+
+        // Currently not configurable in UI (Set manually in settings file)
+        public static bool OverrideColorDiffNewConfig
+        {
+            get => GetBool("OverrideColorDiffNewConfig", false);
+            set => SetBool("OverrideColorDiffNewConfig", value);
+        }
+
+        // Currently not configurable in UI (Set manually in settings file)
         public static string FileExplorerProcessName
         {
             get => GetString("FileExplorerProcessName", "explorer.exe");

@@ -71,8 +71,23 @@ public abstract class DiffHighlightService : TextHighlightService
         // Use reverse color to follow GE theme
         string reverse = AppSettings.ReverseGitColoring.Value ? "reverse" : "";
 
-        SetIfUnsetInGit(key: "color.diff.old", value: $"red {reverse}");
-        SetIfUnsetInGit(key: "color.diff.new", value: $"green {reverse}");
+        if (AppSettings.OverrideColorDiffOldConfig)
+        {
+            commandConfiguration.Add(new GitConfigItem("color.diff.old", $"red {reverse}"), command);
+        }
+        else
+        {
+            SetIfUnsetInGit(key: "color.diff.old", value: $"red {reverse}");
+        }
+
+        if (AppSettings.OverrideColorDiffNewConfig)
+        {
+            commandConfiguration.Add(new GitConfigItem("color.diff.new", $"green {reverse}"), command);
+        }
+        else
+        {
+            SetIfUnsetInGit(key: "color.diff.new", value: $"green {reverse}");
+        }
 
         if (AppSettings.ReverseGitColoring.Value)
         {
