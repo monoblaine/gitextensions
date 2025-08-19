@@ -2135,6 +2135,13 @@ public static partial class AppSettings
         set => SetBool("ReadAndParseCustomDiffMergeTools", value);
     }
 
+    // Currently not configurable in UI (Set manually in settings file)
+    public static string FileExplorerProcessName
+    {
+        get => GetString("FileExplorerProcessName", "explorer.exe");
+        set => SetString("FileExplorerProcessName", value);
+    }
+
     public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
     public static ISetting<string> UninformativeRepoNameRegex { get; } = Setting.Create(DetailedSettingsPath, nameof(UninformativeRepoNameRegex), "app|(repo(sitory)?)");

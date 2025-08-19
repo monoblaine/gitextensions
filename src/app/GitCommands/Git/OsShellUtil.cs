@@ -30,7 +30,7 @@ public static class OsShellUtil
 
     public static void SelectPathInFileExplorer(string filePath) => OpenWithFileExplorer($"/select, {filePath.Quote()}", quote: false);
 
-    public static void OpenWithFileExplorer(string arguments, bool quote = true) => new Executable("explorer.exe").Start(quote ? arguments.Quote() : arguments);
+    public static void OpenWithFileExplorer(string arguments, bool quote = true) => new Executable(AppSettings.FileExplorerProcessName).Start(quote ? arguments.Quote() : arguments);
 
     public static void OpenUrlInDefaultBrowser(string? url)
     {
