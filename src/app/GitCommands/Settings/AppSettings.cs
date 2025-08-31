@@ -2170,6 +2170,13 @@ public static partial class AppSettings
         set => SetBool("RenderRevisionHeaderAsPlainTextOnWine", value);
     }
 
+    // Currently not configurable in UI (Set manually in settings file)
+    public static string DateTimeFormatString
+    {
+        get => GetString("DateTimeFormatString", "G");
+        set => SetString("DateTimeFormatString", value);
+    }
+
     public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
     public static ISetting<string> UninformativeRepoNameRegex { get; } = Setting.Create(DetailedSettingsPath, nameof(UninformativeRepoNameRegex), "app|(repo(sitory)?)");

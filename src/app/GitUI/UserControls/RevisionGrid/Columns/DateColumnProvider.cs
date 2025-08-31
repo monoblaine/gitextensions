@@ -15,7 +15,7 @@ internal sealed class DateColumnProvider : ColumnProvider
     {
         _grid = grid;
 
-        int initialWidth = AppSettings.RelativeDate ? DpiUtil.Scale(130) : TextRenderer.MeasureText(DateTime.Now.ToString("G"), AppSettings.Font).Width;
+        int initialWidth = AppSettings.RelativeDate ? DpiUtil.Scale(130) : TextRenderer.MeasureText(DateTime.Now.ToString(AppSettings.DateTimeFormatString), AppSettings.Font).Width;
 
         Column = new DataGridViewTextBoxColumn
         {
@@ -59,7 +59,7 @@ internal sealed class DateColumnProvider : ColumnProvider
                 return LocalizationHelpers.GetRelativeDateString(DateTime.Now, dt, displayWeeks: false);
             }
 
-            return dt.ToString("G");
+            return dt.ToString(AppSettings.DateTimeFormatString);
         }
     }
 

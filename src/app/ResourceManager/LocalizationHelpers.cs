@@ -63,6 +63,6 @@ public static class LocalizationHelpers
     public static string GetFullDateString(DateTimeOffset datetime)
     {
         // previous format "ddd MMM dd HH':'mm':'ss yyyy"
-        return datetime.LocalDateTime.ToString("G");
+        return datetime.LocalDateTime.ToString(GitCommands.AppSettings.DateTimeFormatString);
     }
 }
