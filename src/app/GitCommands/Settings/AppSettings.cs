@@ -2171,6 +2171,13 @@ namespace GitCommands
             set => SetBool("RenderRevisionHeaderAsPlainTextOnWine", value);
         }
 
+        // Currently not configurable in UI (Set manually in settings file)
+        public static string DateTimeFormatString
+        {
+            get => GetString("DateTimeFormatString", "G");
+            set => SetString("DateTimeFormatString", value);
+        }
+
         public static ISetting<bool> IsEditorSettingsMigrated { get; } = Setting.Create(MigrationSettingsPath, nameof(IsEditorSettingsMigrated), false);
 
         private static IEnumerable<(string name, string value)> GetSettingsFromRegistry()

@@ -72,7 +72,7 @@ namespace ResourceManager
         public static string GetFullDateString(DateTimeOffset datetime)
         {
             // previous format "ddd MMM dd HH':'mm':'ss yyyy"
-            return datetime.LocalDateTime.ToString("G");
+            return datetime.LocalDateTime.ToString(AppSettings.DateTimeFormatString);
         }
 
         public static string GetSubmoduleText(IGitModule superproject, string name, string hash, bool cache)
