@@ -7272,7 +7272,7 @@ Do you want to use this custom merge script?</source>
         <target />
       </trans-unit>
       <trans-unit id="openFolderToolStripMenuItem.Text">
-        <source>Show in folder</source>
+        <source>Show &amp;in folder</source>
         <target />
       </trans-unit>
       <trans-unit id="openMergeToolBtn.Text">
@@ -10740,7 +10740,7 @@ The action cannot be undone.</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiOpenFolder.Text">
-        <source>Show in folder</source>
+        <source>Show &amp;in folder</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiRemoveFromList.Text">
