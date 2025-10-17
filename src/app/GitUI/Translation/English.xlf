@@ -4001,11 +4001,11 @@ You can unset the template:
         <target />
       </trans-unit>
       <trans-unit id="openContainingFolderToolStripMenuItem.Text">
-        <source>Show in folder</source>
+        <source>Show &amp;in folder</source>
         <target />
       </trans-unit>
       <trans-unit id="openFolderMenuItem.Text">
-        <source>Show in folder</source>
+        <source>Show &amp;in folder</source>
         <target />
       </trans-unit>
       <trans-unit id="openToolStripMenuItem.Text">
@@ -4085,7 +4085,7 @@ You can unset the template:
         <target />
       </trans-unit>
       <trans-unit id="stagedOpenFolderToolStripMenuItem10.Text">
-        <source>Show in folder</source>
+        <source>Show &amp;in folder</source>
         <target />
       </trans-unit>
       <trans-unit id="stagedOpenToolStripMenuItem7.Text">
@@ -7196,7 +7196,7 @@ Do you want to use this custom merge script?</source>
         <target />
       </trans-unit>
       <trans-unit id="openFolderToolStripMenuItem.Text">
-        <source>Show in folder</source>
+        <source>Show &amp;in folder</source>
         <target />
       </trans-unit>
       <trans-unit id="openMergeToolBtn.Text">
@@ -10956,7 +10956,7 @@ The action cannot be undone.</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiOpenFolder.Text">
-        <source>Show in folder</source>
+        <source>Show &amp;in folder</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiRemoveFromList.Text">

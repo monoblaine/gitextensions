@@ -280,7 +280,7 @@ namespace GitUI.CommandsDialogs
             openFolderToolStripMenuItem.Image = Properties.Images.BrowseFileExplorer;
             openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
             openFolderToolStripMenuItem.Size = new Size(195, 22);
-            openFolderToolStripMenuItem.Text = "Show in folder";
+            openFolderToolStripMenuItem.Text = "Show &in folder";
             openFolderToolStripMenuItem.Click += openFolderToolStripMenuItem_Click;
             // 
             // toolStripSeparator4

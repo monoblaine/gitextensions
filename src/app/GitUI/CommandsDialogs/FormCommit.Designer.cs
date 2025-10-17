@@ -290,7 +290,7 @@ namespace GitUI.CommandsDialogs
             openContainingFolderToolStripMenuItem.Image = Properties.Images.BrowseFileExplorer;
             openContainingFolderToolStripMenuItem.Name = "openContainingFolderToolStripMenuItem";
             openContainingFolderToolStripMenuItem.Size = new Size(232, 22);
-            openContainingFolderToolStripMenuItem.Text = "Show in folder";
+            openContainingFolderToolStripMenuItem.Text = "Show &in folder";
             openContainingFolderToolStripMenuItem.Click += openContainingFolderToolStripMenuItem_Click;
             // 
             // toolStripSeparator8
@@ -500,7 +500,7 @@ namespace GitUI.CommandsDialogs
             stagedOpenFolderToolStripMenuItem10.Image = Properties.Images.BrowseFileExplorer;
             stagedOpenFolderToolStripMenuItem10.Name = "stagedOpenFolderToolStripMenuItem10";
             stagedOpenFolderToolStripMenuItem10.Size = new Size(232, 22);
-            stagedOpenFolderToolStripMenuItem10.Text = "Show in folder";
+            stagedOpenFolderToolStripMenuItem10.Text = "Show &in folder";
             stagedOpenFolderToolStripMenuItem10.Click += openFolderToolStripMenuItem10_Click;
             // 
             // stagedEditFileToolStripMenuItem11
@@ -611,7 +611,7 @@ namespace GitUI.CommandsDialogs
             openFolderMenuItem.Image = Properties.Images.BrowseFileExplorer;
             openFolderMenuItem.Name = "openFolderMenuItem";
             openFolderMenuItem.Size = new Size(228, 22);
-            openFolderMenuItem.Text = "Show in folder";
+            openFolderMenuItem.Text = "Show &in folder";
             openFolderMenuItem.Click += OpenToolStripMenuItemClick;
             // 
             // copyFolderNameMenuItem

@@ -176,7 +176,7 @@
             tsmiOpenFolder.Image = Properties.Images.BrowseFileExplorer;
             tsmiOpenFolder.Name = "tsmiOpenFolder";
             tsmiOpenFolder.Size = new Size(273, 22);
-            tsmiOpenFolder.Text = "Show in folder";
+            tsmiOpenFolder.Text = "Show &in folder";
             tsmiOpenFolder.Click += tsmiOpenFolder_Click;
             // 
             // tsmiCategories
