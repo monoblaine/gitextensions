@@ -36,7 +36,8 @@ public sealed class Executable : IExecutable
                           Encoding? outputEncoding = null,
                           bool useShellExecute = false,
                           bool throwOnErrorExit = true,
-                          CancellationToken cancellationToken = default)
+                          CancellationToken cancellationToken = default,
+                          ProcessWindowStyle windowStyle = default)
     {
         // TODO should we set these on the child process only?
         EnvironmentConfiguration.SetEnvironmentVariables();
@@ -45,7 +46,7 @@ public sealed class Executable : IExecutable
 
         string fileName = _fileNameProvider();
 
-        return new ProcessWrapper(fileName, PrefixArguments, args, _workingDir, createWindow, redirectInput, redirectOutput, outputEncoding, useShellExecute, throwOnErrorExit, cancellationToken);
+        return new ProcessWrapper(fileName, PrefixArguments, args, _workingDir, createWindow, redirectInput, redirectOutput, outputEncoding, useShellExecute, throwOnErrorExit, cancellationToken, windowStyle);
     }
 
     public string GetWorkingDirectory() => _workingDir;
@@ -86,7 +87,8 @@ public sealed class Executable : IExecutable
                               Encoding? outputEncoding,
                               bool useShellExecute,
                               bool throwOnErrorExit,
-                              CancellationToken cancellationToken)
+                              CancellationToken cancellationToken,
+                              ProcessWindowStyle windowStyle)
         {
             DebugHelpers.Assert(redirectOutput == (outputEncoding is not null), "redirectOutput == (outputEncoding is not null)");
             _redirectInput = redirectInput;
@@ -121,7 +123,8 @@ public sealed class Executable : IExecutable
                     StandardErrorEncoding = _errorEncoding,
                     FileName = fileName,
                     Arguments = $"{prefixArguments}{arguments}",
-                    WorkingDirectory = workDir
+                    WorkingDirectory = workDir,
+                    WindowStyle = windowStyle
                 }
             };
 
