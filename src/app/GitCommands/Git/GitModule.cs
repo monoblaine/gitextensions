@@ -1893,7 +1893,7 @@ namespace GitCommands
                 file.Name.Quote()
             };
 
-            using IProcess process = _gitExecutable.Start(args, createWindow: true);
+            using IProcess process = _gitExecutable.Start(args, createWindow: true, windowStyle: ProcessWindowStyle.Maximized);
             return await process.WaitForExitAsync() == 0;
         }
 

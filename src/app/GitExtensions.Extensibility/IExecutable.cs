@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Text;
 
@@ -26,6 +27,7 @@ public interface IExecutable
     /// error, or <c>null</c> if <paramref name="redirectOutput"/> is <c>false</c>.</param>
     /// <param name="useShellExecute">The value for the flag <c>ProcessStartInfo.UseShellExecute</c>.</param>
     /// <param name="throwOnErrorExit">A flag configuring whether to throw an exception if the exit code is not 0.</param>
+    /// <param name="windowStyle">The <see cref="ProcessWindowStyle"/> value for the flag <c>ProcessStartInfo.WindowStyle</c>.</param>
     /// <returns>The started process.</returns>
     [Pure]
     IProcess Start(ArgumentString arguments = default,
@@ -35,7 +37,8 @@ public interface IExecutable
                    Encoding? outputEncoding = null,
                    bool useShellExecute = false,
                    bool throwOnErrorExit = true,
-                   CancellationToken cancellationToken = default);
+                   CancellationToken cancellationToken = default,
+                   ProcessWindowStyle windowStyle = default);
 
     /// <summary>
     /// Get the directory the execueble is running in.
