@@ -764,25 +764,57 @@ namespace GitUI.CommandsDialogs
 
         private bool FocusStagedFiles()
         {
-            Staged.Focus();
+            if (Staged.Focused)
+            {
+                SelectedDiff.Focus();
+            }
+            else
+            {
+                Staged.Focus();
+            }
+
             return true;
         }
 
         private bool FocusUnstagedFiles()
         {
-            Unstaged.Focus();
+            if (Unstaged.Focused)
+            {
+                SelectedDiff.Focus();
+            }
+            else
+            {
+                Unstaged.Focus();
+            }
+
             return true;
         }
 
         private bool FocusSelectedDiff()
         {
-            SelectedDiff.Focus();
+            if (SelectedDiff.ContainsFocus)
+            {
+                Message.Focus();
+            }
+            else
+            {
+                SelectedDiff.Focus();
+            }
+
             return true;
         }
 
         private bool FocusCommitMessage()
         {
-            Message.Focus();
+            if (Message.ContainsFocus)
+            {
+                SelectedDiff.Focus();
+            }
+            else
+            {
+                Message.Focus();
+            }
+
             return true;
         }
 
