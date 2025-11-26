@@ -669,21 +669,21 @@ namespace GitUI.CommandsDialogs
             // 
             // splitLeft.Panel1
             // 
-            splitLeft.Panel1.Controls.Add(toolStripContainer1);
+            splitLeft.Panel1.Controls.Add(LoadingStaged);
+            splitLeft.Panel1.Controls.Add(Staged);
+            splitLeft.Panel1.Controls.Add(Cancel);
+            splitLeft.Panel1.Controls.Add(toolbarStaged);
             splitLeft.Panel1.Padding = new Padding(1);
-            // 
-            // splitLeft.Panel2
-            // 
-            splitLeft.Panel2.Controls.Add(LoadingStaged);
-            splitLeft.Panel2.Controls.Add(Staged);
-            splitLeft.Panel2.Controls.Add(Cancel);
-            splitLeft.Panel2.Controls.Add(toolbarStaged);
-            splitLeft.Panel2.Padding = new Padding(1);
             splitLeft.Size = new Size(397, 622);
             splitLeft.SplitterDistance = 274;
             splitLeft.SplitterWidth = 6;
             splitLeft.TabIndex = 3;
             splitLeft.TabStop = false;
+            // 
+            // splitLeft.Panel2
+            // 
+            splitLeft.Panel2.Controls.Add(toolStripContainer1);
+            splitLeft.Panel2.Padding = new Padding(1);
             // 
             // toolStripContainer1
             // 
