@@ -687,6 +687,10 @@ public sealed partial class FormCommit : GitModuleForm
         {
             SelectedDiff.Focus();
         }
+        else if (SelectedDiff.ContainsFocus)
+        {
+            Message.Focus();
+        }
         else
         {
             Staged.Focus();
@@ -700,6 +704,10 @@ public sealed partial class FormCommit : GitModuleForm
         if (Unstaged.Focused)
         {
             SelectedDiff.Focus();
+        }
+        else if (SelectedDiff.ContainsFocus)
+        {
+            Message.Focus();
         }
         else
         {
