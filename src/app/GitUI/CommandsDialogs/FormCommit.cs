@@ -768,6 +768,10 @@ namespace GitUI.CommandsDialogs
             {
                 SelectedDiff.Focus();
             }
+            else if (SelectedDiff.ContainsFocus)
+            {
+                Message.Focus();
+            }
             else
             {
                 Staged.Focus();
@@ -781,6 +785,10 @@ namespace GitUI.CommandsDialogs
             if (Unstaged.Focused)
             {
                 SelectedDiff.Focus();
+            }
+            else if (SelectedDiff.ContainsFocus)
+            {
+                Message.Focus();
             }
             else
             {
