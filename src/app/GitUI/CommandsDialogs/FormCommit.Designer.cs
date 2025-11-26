@@ -377,7 +377,7 @@ namespace GitUI.CommandsDialogs
             //
             interactiveAddToolStripMenuItem.Name = "interactiveAddToolStripMenuItem";
             interactiveAddToolStripMenuItem.Size = new Size(232, 22);
-            interactiveAddToolStripMenuItem.Text = "Interactive Add";
+            interactiveAddToolStripMenuItem.Text = "Interactive &Add";
             interactiveAddToolStripMenuItem.Click += interactiveAddToolStripMenuItem_Click;
             //
             // toolStripSeparatorScript

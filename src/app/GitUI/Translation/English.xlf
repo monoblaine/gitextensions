@@ -3989,7 +3989,7 @@ You can unset the template:
         <target />
       </trans-unit>
       <trans-unit id="interactiveAddToolStripMenuItem.Text">
-        <source>Interactive Add</source>
+        <source>Interactive &amp;Add</source>
         <target />
       </trans-unit>
       <trans-unit id="modifyCommitMessageButton.Text">
