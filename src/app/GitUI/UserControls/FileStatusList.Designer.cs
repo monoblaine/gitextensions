@@ -755,7 +755,7 @@ partial class FileStatusList
         // 
         tsmiInteractiveAdd.Name = "tsmiInteractiveAdd";
         tsmiInteractiveAdd.Size = new Size(295, 22);
-        tsmiInteractiveAdd.Text = "Interactive add...";
+        tsmiInteractiveAdd.Text = "Interactive &add...";
         tsmiInteractiveAdd.Visible = false;
         tsmiInteractiveAdd.Click += InteractiveAdd_Click;
         // 

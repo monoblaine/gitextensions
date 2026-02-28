@@ -1767,7 +1767,7 @@ Suitable for some config files modified locally.</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiInteractiveAdd.Text">
-        <source>Interactive add...</source>
+        <source>Interactive &amp;add...</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiMove.Text">
