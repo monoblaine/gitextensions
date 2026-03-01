@@ -1064,7 +1064,6 @@ partial class FileStatusList
         // FileStatusList
         // 
         AutoScaleMode = AutoScaleMode.Inherit;
-        Controls.Add(LoadingFiles);
         Controls.Add(NoFiles);
         Controls.Add(lblFindInCommitFilesGitGrepWatermark);
         Controls.Add(DeleteSearchButton);
