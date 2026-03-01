@@ -1144,9 +1144,7 @@ public sealed partial class FileStatusList : GitModuleControl
     }
 
     private int GetFileStatusListTop(bool isFilesFilterVisible)
-        => isFilesFilterVisible ? _NO_TRANSLATE_FilterComboBox.Bottom + _NO_TRANSLATE_FilterComboBox.Margin.Top + _NO_TRANSLATE_FilterComboBox.Margin.Bottom
-            : cboFindInCommitFilesGitGrep.Visible ? cboFindInCommitFilesGitGrep.Bottom + cboFindInCommitFilesGitGrep.Margin.Top + cboFindInCommitFilesGitGrep.Margin.Bottom
-            : lblSplitter.Bottom;
+        => lblSplitter.Bottom;
 
     private void UpdateFileStatusListView(IReadOnlyList<FileStatusWithDescription> items, bool updateCausedByFilter = false, GitGrepState gitGrepState = GitGrepState.Unknown, CancellationToken cancellationToken = default)
     {
