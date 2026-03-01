@@ -1073,7 +1073,6 @@ partial class FileStatusList
         Controls.Add(FileStatusListView);
         Controls.Add(_NO_TRANSLATE_FilterComboBox);
         Controls.Add(lblSplitter);
-        Controls.Add(Toolbar);
         Margin = new Padding(3, 4, 3, 4);
         Name = "FileStatusList";
         Size = new Size(682, 485);
