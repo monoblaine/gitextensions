@@ -40,7 +40,6 @@ partial class FileStatusList
         _NO_TRANSLATE_FilterComboBox = new ComboBox();
         FilterWatermarkLabel = new Label();
         FilterToolTip = new ToolTip(components);
-        lblSplitter = new Label();
         DeleteFilterButton = new Label();
         cboFindInCommitFilesGitGrep = new ComboBox();
         lblFindInCommitFilesGitGrepWatermark = new Label();
@@ -233,14 +232,6 @@ partial class FileStatusList
         FilterToolTip.ToolTipTitle = "RegEx";
         FilterToolTip.UseAnimation = false;
         FilterToolTip.UseFading = false;
-        // 
-        // lblSplitter
-        // 
-        lblSplitter.Dock = DockStyle.Top;
-        lblSplitter.Location = new Point(0, 25);
-        lblSplitter.Name = "lblSplitter";
-        lblSplitter.Size = new Size(682, 2);
-        lblSplitter.TabIndex = 8;
         // 
         // DeleteFilterButton
         // 
@@ -1072,7 +1063,6 @@ partial class FileStatusList
         Controls.Add(cboFindInCommitFilesGitGrep);
         Controls.Add(FileStatusListView);
         Controls.Add(_NO_TRANSLATE_FilterComboBox);
-        Controls.Add(lblSplitter);
         Margin = new Padding(3, 4, 3, 4);
         Name = "FileStatusList";
         Size = new Size(682, 485);
@@ -1092,7 +1082,6 @@ partial class FileStatusList
     private ComboBox _NO_TRANSLATE_FilterComboBox;
     private Label FilterWatermarkLabel;
     private ToolTip FilterToolTip;
-    private Label lblSplitter;
     private Label DeleteFilterButton;
     private ComboBox cboFindInCommitFilesGitGrep;
     private Label lblFindInCommitFilesGitGrepWatermark;

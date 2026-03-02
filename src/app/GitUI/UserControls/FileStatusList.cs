@@ -326,7 +326,6 @@ public sealed partial class FileStatusList : GitModuleControl
         if (_isFileTreeMode)
         {
             Toolbar.Visible = false;
-            lblSplitter.Height = DpiUtil.Scale(1);
             SetFindInCommitFilesGitGrepVisibilityImpl(AppSettings.ShowFindInCommitFilesGitGrep.Value);
             _diffCalculator.SetGrep("", fileTreeMode: true);
             GroupByRevision = false;
@@ -336,7 +335,6 @@ public sealed partial class FileStatusList : GitModuleControl
         {
             SetupUnifiedDiffListSorting();
             UpdateToolbar();
-            lblSplitter.Height = 0;
         }
     }
 
@@ -466,7 +464,7 @@ public sealed partial class FileStatusList : GitModuleControl
             }
 
             // Adjust sizes "automatically" changed by visibility
-            int findTop = lblSplitter.Bottom;
+            int findTop = 0;
             cboFindInCommitFilesGitGrep.Top = findTop;
             lblFindInCommitFilesGitGrepWatermark.Top = findTop;
             DeleteSearchButton.Top = findTop;
@@ -487,7 +485,7 @@ public sealed partial class FileStatusList : GitModuleControl
 
         // Adjust locations
         // Note that 'LoadingFiles' location depends on visibility of Filter box, must be set each time made visible
-        int top = !cboFindInCommitFilesGitGrep.Visible ? lblSplitter.Bottom : cboFindInCommitFilesGitGrep.Bottom + cboFindInCommitFilesGitGrep.Margin.Bottom;
+        int top = !cboFindInCommitFilesGitGrep.Visible ? 0 : cboFindInCommitFilesGitGrep.Bottom + cboFindInCommitFilesGitGrep.Margin.Bottom;
         _NO_TRANSLATE_FilterComboBox.Top = top;
         _NO_TRANSLATE_FilterComboBox.Width = FileStatusListView.Width;
         FilterWatermarkLabel.Top = top;
@@ -1144,7 +1142,7 @@ public sealed partial class FileStatusList : GitModuleControl
     }
 
     private int GetFileStatusListTop(bool isFilesFilterVisible)
-        => lblSplitter.Bottom;
+        => 0;
 
     private void UpdateFileStatusListView(IReadOnlyList<FileStatusWithDescription> items, bool updateCausedByFilter = false, GitGrepState gitGrepState = GitGrepState.Unknown, CancellationToken cancellationToken = default)
     {
