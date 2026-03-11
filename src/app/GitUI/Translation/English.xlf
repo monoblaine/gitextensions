@@ -1683,7 +1683,7 @@ Suitable for some config files modified locally.</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiCopyPaths.Text">
-        <source>Copy &amp;path(s)</source>
+        <source>&amp;Copy path(s)</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiDeleteFile.Text">
@@ -1775,7 +1775,7 @@ Suitable for some config files modified locally.</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiOpenFindInCommitFilesGitGrepDialog.Text">
-        <source>Find in &amp;commit files using git-grep...</source>
+        <source>Find in commit files using git-grep...</source>
         <target />
       </trans-unit>
       <trans-unit id="tsmiOpenInVisualStudio.Text">
