@@ -1072,6 +1072,11 @@ public sealed partial class FormCommit : GitModuleForm
 
     private void ShowChanges(FileStatusItem? item, bool staged)
     {
+        if (_currentItem == item)
+        {
+            return;
+        }
+
         _currentItem = item;
         _currentItemStaged = staged;
 
