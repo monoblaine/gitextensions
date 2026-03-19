@@ -1070,9 +1070,9 @@ public sealed partial class FormCommit : GitModuleForm
         }
     }
 
-    private void ShowChanges(FileStatusItem? item, bool staged)
+    private void ShowChanges(FileStatusItem? item, bool staged, bool skipIfItemIsAlreadyTheCurrentItem = true)
     {
-        if (_currentItem == item)
+        if (skipIfItemIsAlreadyTheCurrentItem && _currentItem == item)
         {
             return;
         }
@@ -2132,7 +2132,7 @@ public sealed partial class FormCommit : GitModuleForm
 
     private void SelectedDiffExtraDiffArgumentsChanged(object sender, EventArgs e)
     {
-        ShowChanges(_currentItem, _currentItemStaged);
+        ShowChanges(_currentItem, _currentItemStaged, skipIfItemIsAlreadyTheCurrentItem: false);
     }
 
     private void SelectedDiff_PatchApplied(object sender, EventArgs e)
