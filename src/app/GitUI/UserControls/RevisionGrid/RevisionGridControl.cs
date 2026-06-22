@@ -926,7 +926,6 @@ public sealed partial class RevisionGridControl : GitModuleControl, ICheckRefs, 
             _gridView.ClearSelection();
             _gridView.Clear();
             _gridView.Enabled = true;
-            _gridView.Focus();
             _gridView.SelectionChanged += OnGridViewSelectionChanged;
             _gridView.MarkAsDataLoading();
 
